@@ -1,0 +1,44 @@
+{
+    "FrenchCompass": {
+        "name": "French Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    },
+    "GreekCompass": {
+        "name": "Greek Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    },
+    "DutchCompass": {
+        "name": "Dutch Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    },
+    "ItalianCompass": {
+        "name": "Italian Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    },
+    "LatinCompass": {
+        "name": "Latin Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    },
+    "EnglishCompass": {
+        "name": "English Compass",
+        "radius": 900,
+        "offset_x": 0,
+        "offset_y": -420,
+        "draw_mode": "normal"
+    }
+}

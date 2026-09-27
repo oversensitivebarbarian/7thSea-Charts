@@ -1,0 +1,177 @@
+{
+    "Plotting Porpoise 002": {
+        "name": "Plotting Porpoise 002",
+        "radius": 127,
+        "offset_x": 0,
+        "offset_y": -23,
+        "draw_mode": "normal"
+    },
+    "Thicc Mermaid": {
+        "name": "Thicc Mermaid",
+        "radius": 184,
+        "offset_x": 0,
+        "offset_y": -56,
+        "draw_mode": "normal"
+    },
+    "Spouty": {
+        "name": "Spouty",
+        "radius": 152,
+        "offset_x": 0,
+        "offset_y": -60,
+        "draw_mode": "normal"
+    },
+    "Ophiotaurus w: Dinner": {
+        "name": "Ophiotaurus W: Dinner",
+        "radius": 302,
+        "offset_x": 0,
+        "offset_y": -88,
+        "draw_mode": "normal"
+    },
+    "Mad Kitty Serpent": {
+        "name": "Mad Kitty Serpent",
+        "radius": 167,
+        "offset_x": 0,
+        "offset_y": -39,
+        "draw_mode": "normal"
+    },
+    "Woodpecker Whale": {
+        "name": "Woodpecker Whale",
+        "radius": 97,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "Plotting Porpoise 001": {
+        "name": "Plotting Porpoise 001",
+        "radius": 128,
+        "offset_x": 0,
+        "offset_y": -25,
+        "draw_mode": "normal"
+    },
+    "Mermaid": {
+        "name": "Mermaid",
+        "radius": 201,
+        "offset_x": 0,
+        "offset_y": -89,
+        "draw_mode": "normal"
+    },
+    "Puking Whale": {
+        "name": "Puking Whale",
+        "radius": 134,
+        "offset_x": 0,
+        "offset_y": -39,
+        "draw_mode": "normal"
+    },
+    "Happy Bird Fish": {
+        "name": "Happy Bird Fish",
+        "radius": 60,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "Flying Fish": {
+        "name": "Flying Fish",
+        "radius": 37,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "Naughty Fish": {
+        "name": "Naughty Fish",
+        "radius": 149,
+        "offset_x": 0,
+        "offset_y": -52,
+        "draw_mode": "normal"
+    },
+    "Duck Snake": {
+        "name": "Duck Snake",
+        "radius": 209,
+        "offset_x": 0,
+        "offset_y": -85,
+        "draw_mode": "normal"
+    },
+    "Monster Swordfish": {
+        "name": "Monster Swordfish",
+        "radius": 102,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "Pronged Beast": {
+        "name": "Pronged Beast",
+        "radius": 172,
+        "offset_x": 0,
+        "offset_y": -48,
+        "draw_mode": "normal"
+    },
+    "Snaggletooth": {
+        "name": "Snaggletooth",
+        "radius": 140,
+        "offset_x": 0,
+        "offset_y": -34,
+        "draw_mode": "normal"
+    },
+    "One Merman Band": {
+        "name": "One Merman Band",
+        "radius": 302,
+        "offset_x": 0,
+        "offset_y": -86,
+        "draw_mode": "normal"
+    },
+    "Plotting Porpoise 003": {
+        "name": "Plotting Porpoise 003",
+        "radius": 125,
+        "offset_x": 0,
+        "offset_y": -24,
+        "draw_mode": "normal"
+    },
+    "Clawed Freakout Beast": {
+        "name": "Clawed Freakout Beast",
+        "radius": 186,
+        "offset_x": 0,
+        "offset_y": -43,
+        "draw_mode": "normal"
+    },
+    "Tired Sea Beast": {
+        "name": "Tired Sea Beast",
+        "radius": 60,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "Side-eye Serpent": {
+        "name": "Side-eye Serpent",
+        "radius": 113,
+        "offset_x": 0,
+        "offset_y": -32,
+        "draw_mode": "normal"
+    },
+    "Bug Beast": {
+        "name": "Bug Beast",
+        "radius": 166,
+        "offset_x": 0,
+        "offset_y": -51,
+        "draw_mode": "normal"
+    },
+    "Spouting Frog Beast": {
+        "name": "Spouting Frog Beast",
+        "radius": 134,
+        "offset_x": 0,
+        "offset_y": -48,
+        "draw_mode": "normal"
+    },
+    "Grumpy Frog Beast": {
+        "name": "Grumpy Frog Beast",
+        "radius": 217,
+        "offset_x": 0,
+        "offset_y": -93,
+        "draw_mode": "normal"
+    },
+    "Derpy Beast": {
+        "name": "Derpy Beast",
+        "radius": 62,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    }
+}

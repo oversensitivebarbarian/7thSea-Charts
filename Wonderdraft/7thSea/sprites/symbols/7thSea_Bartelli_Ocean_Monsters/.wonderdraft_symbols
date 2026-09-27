@@ -1,0 +1,51 @@
+{
+    "Tuffed Eared Manatee": {
+        "name": "Tuffed Eared Manatee",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -26,
+        "draw_mode": "normal"
+    },
+    "Really-Into-Homebrewing Fish": {
+        "name": "Really- Into- Homebrewing Fish",
+        "radius": 87,
+        "offset_x": 0,
+        "offset_y": -22,
+        "draw_mode": "normal"
+    },
+    "Intense Flower Beast": {
+        "name": "Intense Flower Beast",
+        "radius": 147,
+        "offset_x": 0,
+        "offset_y": -52,
+        "draw_mode": "normal"
+    },
+    "Beast of Panic": {
+        "name": "Beast Of Panic",
+        "radius": 125,
+        "offset_x": 0,
+        "offset_y": -43,
+        "draw_mode": "normal"
+    },
+    "Parrot Fish": {
+        "name": "Parrot Fish",
+        "radius": 214,
+        "offset_x": 0,
+        "offset_y": -102,
+        "draw_mode": "normal"
+    },
+    "Hieronymus Bosch Fish": {
+        "name": "Hieronymus Bosch Fish",
+        "radius": 104,
+        "offset_x": 0,
+        "offset_y": -26,
+        "draw_mode": "normal"
+    },
+    "Real-Happy-To-Be-Here Serpent": {
+        "name": "Real- Happy- To- Be- Here Serpent",
+        "radius": 115,
+        "offset_x": 0,
+        "offset_y": -42,
+        "draw_mode": "normal"
+    }
+}

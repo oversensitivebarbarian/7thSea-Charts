@@ -1,0 +1,65 @@
+{
+    "Goatee Unicorn": {
+        "name": "Goatee Unicorn",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -32,
+        "draw_mode": "normal"
+    },
+    "Rhinoceros": {
+        "name": "Rhinoceros",
+        "radius": 42,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "Griffin": {
+        "name": "Griffin",
+        "radius": 56,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "Monkey": {
+        "name": "Monkey",
+        "radius": 39,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "Pretty Good Lion": {
+        "name": "Pretty Good Lion",
+        "radius": 63,
+        "offset_x": 0,
+        "offset_y": -22,
+        "draw_mode": "normal"
+    },
+    "Decent Elephant": {
+        "name": "Decent Elephant",
+        "radius": 49,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "Goat": {
+        "name": "Goat",
+        "radius": 72,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    },
+    "Long-necked Cheetah": {
+        "name": "Long-necked Cheetah",
+        "radius": 63,
+        "offset_x": 0,
+        "offset_y": -16,
+        "draw_mode": "normal"
+    },
+    "Camel": {
+        "name": "Camel",
+        "radius": 80,
+        "offset_x": 0,
+        "offset_y": -38,
+        "draw_mode": "normal"
+    }
+}

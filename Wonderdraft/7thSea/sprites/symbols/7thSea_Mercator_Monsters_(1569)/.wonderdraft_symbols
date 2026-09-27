@@ -1,0 +1,86 @@
+{
+    "Dog-Eared Dolphin": {
+        "name": "Dog- Eared Dolphin",
+        "radius": 163,
+        "offset_x": 0,
+        "offset_y": -38,
+        "draw_mode": "normal"
+    },
+    "Triceratops Fish": {
+        "name": "Triceratops Fish",
+        "radius": 80,
+        "offset_x": 0,
+        "offset_y": -17,
+        "draw_mode": "normal"
+    },
+    "Happy and Splashy": {
+        "name": "Happy And Splashy",
+        "radius": 128,
+        "offset_x": 0,
+        "offset_y": -30,
+        "draw_mode": "normal"
+    },
+    "Big Mouth Beast": {
+        "name": "Big Mouth Beast",
+        "radius": 129,
+        "offset_x": 0,
+        "offset_y": -25,
+        "draw_mode": "normal"
+    },
+    "Dog-Faced Fish": {
+        "name": "Dog- Faced Fish",
+        "radius": 90,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "Monstrous Sea Serpent": {
+        "name": "Monstrous Sea Serpent",
+        "radius": 204,
+        "offset_x": 0,
+        "offset_y": -87,
+        "draw_mode": "normal"
+    },
+    "Long Dolphin": {
+        "name": "Long Dolphin",
+        "radius": 108,
+        "offset_x": 0,
+        "offset_y": -31,
+        "draw_mode": "normal"
+    },
+    "Absolute Unit Porpoise": {
+        "name": "Absolute Unit Porpoise",
+        "radius": 152,
+        "offset_x": 0,
+        "offset_y": -29,
+        "draw_mode": "normal"
+    },
+    "A Shockingly Well Rendered Seal": {
+        "name": "A Shockingly Well Rendered Seal",
+        "radius": 96,
+        "offset_x": 0,
+        "offset_y": -23,
+        "draw_mode": "normal"
+    },
+    "Posiden Riding Seahorse": {
+        "name": "Posiden Riding Seahorse",
+        "radius": 289,
+        "offset_x": 0,
+        "offset_y": -109,
+        "draw_mode": "normal"
+    },
+    "Smile Fish": {
+        "name": "Smile Fish",
+        "radius": 120,
+        "offset_x": 0,
+        "offset_y": -29,
+        "draw_mode": "normal"
+    },
+    "Happy Healthy Thriving": {
+        "name": "Happy Healthy Thriving",
+        "radius": 120,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    }
+}

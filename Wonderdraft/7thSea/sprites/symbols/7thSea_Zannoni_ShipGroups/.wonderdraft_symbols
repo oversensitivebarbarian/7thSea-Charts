@@ -1,0 +1,30 @@
+{
+    "ShipGroups_2": {
+        "name": "Ship Groups 2",
+        "radius": 124,
+        "offset_x": 0,
+        "offset_y": -36,
+        "draw_mode": "normal"
+    },
+    "ShipGroups_4": {
+        "name": "Ship Groups 4",
+        "radius": 222,
+        "offset_x": 0,
+        "offset_y": -57,
+        "draw_mode": "normal"
+    },
+    "ShipGroups_3": {
+        "name": "Ship Groups 3",
+        "radius": 212,
+        "offset_x": 0,
+        "offset_y": -59,
+        "draw_mode": "normal"
+    },
+    "ShipGroups_1": {
+        "name": "Ship Groups 1",
+        "radius": 182,
+        "offset_x": 0,
+        "offset_y": -40,
+        "draw_mode": "normal"
+    }
+}

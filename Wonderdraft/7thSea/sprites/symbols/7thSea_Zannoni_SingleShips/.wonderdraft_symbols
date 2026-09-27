@@ -1,0 +1,317 @@
+{
+    "SingleShips_4": {
+        "name": "Single Ships 4",
+        "radius": 187,
+        "offset_x": 0,
+        "offset_y": -124,
+        "draw_mode": "normal"
+    },
+    "SingleShips_14": {
+        "name": "Single Ships 14",
+        "radius": 114,
+        "offset_x": 0,
+        "offset_y": -49,
+        "draw_mode": "normal"
+    },
+    "SingleShips_1": {
+        "name": "Single Ships 1",
+        "radius": 117,
+        "offset_x": 0,
+        "offset_y": -58,
+        "draw_mode": "normal"
+    },
+    "SingleShips_39": {
+        "name": "Single Ships 39",
+        "radius": 163,
+        "offset_x": 0,
+        "offset_y": -74,
+        "draw_mode": "normal"
+    },
+    "SingleShips_2": {
+        "name": "Single Ships 2",
+        "radius": 210,
+        "offset_x": 0,
+        "offset_y": -88,
+        "draw_mode": "normal"
+    },
+    "SingleShips_3": {
+        "name": "Single Ships 3",
+        "radius": 185,
+        "offset_x": 0,
+        "offset_y": -121,
+        "draw_mode": "normal"
+    },
+    "SingleShips_24": {
+        "name": "Single Ships 24",
+        "radius": 140,
+        "offset_x": 0,
+        "offset_y": -61,
+        "draw_mode": "normal"
+    },
+    "SingleShips_45": {
+        "name": "Single Ships 45",
+        "radius": 104,
+        "offset_x": 0,
+        "offset_y": -41,
+        "draw_mode": "normal"
+    },
+    "SingleShips_22": {
+        "name": "Single Ships 22",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -31,
+        "draw_mode": "normal"
+    },
+    "SingleShips_21": {
+        "name": "Single Ships 21",
+        "radius": 127,
+        "offset_x": 0,
+        "offset_y": -66,
+        "draw_mode": "normal"
+    },
+    "SingleShips_12": {
+        "name": "Single Ships 12",
+        "radius": 83,
+        "offset_x": 0,
+        "offset_y": -100,
+        "draw_mode": "normal"
+    },
+    "SingleShips_23": {
+        "name": "Single Ships 23",
+        "radius": 119,
+        "offset_x": 0,
+        "offset_y": -41,
+        "draw_mode": "normal"
+    },
+    "SingleShips_19": {
+        "name": "Single Ships 19",
+        "radius": 108,
+        "offset_x": 0,
+        "offset_y": -48,
+        "draw_mode": "normal"
+    },
+    "SingleShips_18": {
+        "name": "Single Ships 18",
+        "radius": 118,
+        "offset_x": 0,
+        "offset_y": -49,
+        "draw_mode": "normal"
+    },
+    "SingleShips_8": {
+        "name": "Single Ships 8",
+        "radius": 179,
+        "offset_x": 0,
+        "offset_y": -82,
+        "draw_mode": "normal"
+    },
+    "SingleShips_37": {
+        "name": "Single Ships 37",
+        "radius": 136,
+        "offset_x": 0,
+        "offset_y": -59,
+        "draw_mode": "normal"
+    },
+    "SingleShips_32": {
+        "name": "Single Ships 32",
+        "radius": 61,
+        "offset_x": 0,
+        "offset_y": -29,
+        "draw_mode": "normal"
+    },
+    "SingleShips_27": {
+        "name": "Single Ships 27",
+        "radius": 35,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "SingleShips_16": {
+        "name": "Single Ships 16",
+        "radius": 167,
+        "offset_x": 0,
+        "offset_y": -69,
+        "draw_mode": "normal"
+    },
+    "SingleShips_31": {
+        "name": "Single Ships 31",
+        "radius": 25,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "SingleShips_34": {
+        "name": "Single Ships 34",
+        "radius": 73,
+        "offset_x": 0,
+        "offset_y": -25,
+        "draw_mode": "normal"
+    },
+    "SingleShips_13": {
+        "name": "Single Ships 13",
+        "radius": 82,
+        "offset_x": 0,
+        "offset_y": -71,
+        "draw_mode": "normal"
+    },
+    "SingleShips_9": {
+        "name": "Single Ships 9",
+        "radius": 174,
+        "offset_x": 0,
+        "offset_y": -73,
+        "draw_mode": "normal"
+    },
+    "SingleShips_17": {
+        "name": "Single Ships 17",
+        "radius": 158,
+        "offset_x": 0,
+        "offset_y": -83,
+        "draw_mode": "normal"
+    },
+    "SingleShips_11": {
+        "name": "Single Ships 11",
+        "radius": 104,
+        "offset_x": 0,
+        "offset_y": -50,
+        "draw_mode": "normal"
+    },
+    "SingleShips_25": {
+        "name": "Single Ships 25",
+        "radius": 126,
+        "offset_x": 0,
+        "offset_y": -49,
+        "draw_mode": "normal"
+    },
+    "SingleShips_40": {
+        "name": "Single Ships 40",
+        "radius": 211,
+        "offset_x": 0,
+        "offset_y": -136,
+        "draw_mode": "normal"
+    },
+    "SingleShips_10": {
+        "name": "Single Ships 10",
+        "radius": 224,
+        "offset_x": 0,
+        "offset_y": -119,
+        "draw_mode": "normal"
+    },
+    "SingleShips_20": {
+        "name": "Single Ships 20",
+        "radius": 118,
+        "offset_x": 0,
+        "offset_y": -50,
+        "draw_mode": "normal"
+    },
+    "SingleShips_33": {
+        "name": "Single Ships 33",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -35,
+        "draw_mode": "normal"
+    },
+    "SingleShips_6": {
+        "name": "Single Ships 6",
+        "radius": 120,
+        "offset_x": 0,
+        "offset_y": -33,
+        "draw_mode": "normal"
+    },
+    "SingleShips_36": {
+        "name": "Single Ships 36",
+        "radius": 111,
+        "offset_x": 0,
+        "offset_y": -68,
+        "draw_mode": "normal"
+    },
+    "SingleShips_7": {
+        "name": "Single Ships 7",
+        "radius": 126,
+        "offset_x": 0,
+        "offset_y": -45,
+        "draw_mode": "normal"
+    },
+    "SingleShips_29": {
+        "name": "Single Ships 29",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "SingleShips_15": {
+        "name": "Single Ships 15",
+        "radius": 170,
+        "offset_x": 0,
+        "offset_y": -70,
+        "draw_mode": "normal"
+    },
+    "SingleShips_35": {
+        "name": "Single Ships 35",
+        "radius": 97,
+        "offset_x": 0,
+        "offset_y": -41,
+        "draw_mode": "normal"
+    },
+    "SingleShips_26": {
+        "name": "Single Ships 26",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -33,
+        "draw_mode": "normal"
+    },
+    "SingleShips_30": {
+        "name": "Single Ships 30",
+        "radius": 33,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "SingleShips_28": {
+        "name": "Single Ships 28",
+        "radius": 67,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    },
+    "SingleShips_43": {
+        "name": "Single Ships 43",
+        "radius": 75,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "SingleShips_41": {
+        "name": "Single Ships 41",
+        "radius": 137,
+        "offset_x": 0,
+        "offset_y": -49,
+        "draw_mode": "normal"
+    },
+    "SingleShips_44": {
+        "name": "Single Ships 44",
+        "radius": 92,
+        "offset_x": 0,
+        "offset_y": -30,
+        "draw_mode": "normal"
+    },
+    "SingleShips_42": {
+        "name": "Single Ships 42",
+        "radius": 140,
+        "offset_x": 0,
+        "offset_y": -48,
+        "draw_mode": "normal"
+    },
+    "SingleShips_5": {
+        "name": "Single Ships 5",
+        "radius": 149,
+        "offset_x": 0,
+        "offset_y": -60,
+        "draw_mode": "normal"
+    },
+    "SingleShips_38": {
+        "name": "Single Ships 38",
+        "radius": 165,
+        "offset_x": 0,
+        "offset_y": -77,
+        "draw_mode": "normal"
+    }
+}

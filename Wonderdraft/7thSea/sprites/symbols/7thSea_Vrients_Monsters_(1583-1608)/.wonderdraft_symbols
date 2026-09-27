@@ -1,0 +1,149 @@
+{
+    "Spouting Creature": {
+        "name": "Spouting Creature",
+        "radius": 42,
+        "offset_x": 0,
+        "offset_y": -21,
+        "draw_mode": "normal"
+    },
+    "Friendly Beast": {
+        "name": "Friendly Beast",
+        "radius": 89,
+        "offset_x": 0,
+        "offset_y": -16,
+        "draw_mode": "normal"
+    },
+    "Elephant Seal": {
+        "name": "Elephant Seal",
+        "radius": 112,
+        "offset_x": 0,
+        "offset_y": -16,
+        "draw_mode": "normal"
+    },
+    "Warthog Fish": {
+        "name": "Warthog Fish",
+        "radius": 43,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "Annoyed Creature": {
+        "name": "Annoyed Creature",
+        "radius": 98,
+        "offset_x": 0,
+        "offset_y": -36,
+        "draw_mode": "normal"
+    },
+    "Whale": {
+        "name": "Whale",
+        "radius": 49,
+        "offset_x": 0,
+        "offset_y": -24,
+        "draw_mode": "normal"
+    },
+    "Old Man": {
+        "name": "Old Man",
+        "radius": 80,
+        "offset_x": 0,
+        "offset_y": -22,
+        "draw_mode": "normal"
+    },
+    "Flying Fish": {
+        "name": "Flying Fish",
+        "radius": 31,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "Poseidon with Seahorse": {
+        "name": "Poseidon With Seahorse",
+        "radius": 117,
+        "offset_x": 0,
+        "offset_y": -37,
+        "draw_mode": "normal"
+    },
+    "Creature": {
+        "name": "Creature",
+        "radius": 41,
+        "offset_x": 0,
+        "offset_y": -16,
+        "draw_mode": "normal"
+    },
+    "Breaching Whale": {
+        "name": "Breaching Whale",
+        "radius": 54,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "Sea Spaniel": {
+        "name": "Sea Spaniel",
+        "radius": 99,
+        "offset_x": 0,
+        "offset_y": -23,
+        "draw_mode": "normal"
+    },
+    "Excited Sea Monster": {
+        "name": "Excited Sea Monster",
+        "radius": 154,
+        "offset_x": 0,
+        "offset_y": -52,
+        "draw_mode": "normal"
+    },
+    "Gasping Creature": {
+        "name": "Gasping Creature",
+        "radius": 32,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "Old Guy Spouter": {
+        "name": "Old Guy Spouter",
+        "radius": 68,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "Ol' Frill Eye": {
+        "name": "Ol' Frill Eye",
+        "radius": 228,
+        "offset_x": 0,
+        "offset_y": -98,
+        "draw_mode": "normal"
+    },
+    "Catfish Creature": {
+        "name": "Catfish Creature",
+        "radius": 100,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "Coy Porpoise": {
+        "name": "Coy Porpoise",
+        "radius": 89,
+        "offset_x": 0,
+        "offset_y": -19,
+        "draw_mode": "normal"
+    },
+    "Living His Best Life": {
+        "name": "Living His Best Life",
+        "radius": 45,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "Big Spouting Beast": {
+        "name": "Big Spouting Beast",
+        "radius": 135,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    },
+    "Thrashing Beash": {
+        "name": "Thrashing Beash",
+        "radius": 51,
+        "offset_x": 0,
+        "offset_y": -14,
+        "draw_mode": "normal"
+    }
+}

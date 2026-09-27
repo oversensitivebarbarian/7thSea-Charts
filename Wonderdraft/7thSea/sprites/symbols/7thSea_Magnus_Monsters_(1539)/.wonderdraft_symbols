@@ -1,0 +1,198 @@
+{
+    "Sea Snake": {
+        "name": "Sea Snake",
+        "radius": 88,
+        "offset_x": 0,
+        "offset_y": -14,
+        "draw_mode": "normal"
+    },
+    "Sea Serpent Wrecking Ship": {
+        "name": "Sea Serpent Wrecking Ship",
+        "radius": 344,
+        "offset_x": 0,
+        "offset_y": -132,
+        "draw_mode": "normal"
+    },
+    "Another Basic Fish": {
+        "name": "Another Basic Fish",
+        "radius": 54,
+        "offset_x": 0,
+        "offset_y": -17,
+        "draw_mode": "normal"
+    },
+    "Rage Spouting Seahorse": {
+        "name": "Rage Spouting Seahorse",
+        "radius": 241,
+        "offset_x": 0,
+        "offset_y": -83,
+        "draw_mode": "normal"
+    },
+    "Geese and Fish": {
+        "name": "Geese And Fish",
+        "radius": 89,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "The Devourers": {
+        "name": "The Devourers",
+        "radius": 246,
+        "offset_x": 0,
+        "offset_y": -66,
+        "draw_mode": "normal"
+    },
+    "Bat Seal": {
+        "name": "Bat Seal",
+        "radius": 128,
+        "offset_x": 0,
+        "offset_y": -30,
+        "draw_mode": "normal"
+    },
+    "Sea Unicorn": {
+        "name": "Sea Unicorn",
+        "radius": 100,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "Fish": {
+        "name": "Fish",
+        "radius": 121,
+        "offset_x": 0,
+        "offset_y": -35,
+        "draw_mode": "normal"
+    },
+    "Whale Sinks Ship": {
+        "name": "Whale Sinks Ship",
+        "radius": 196,
+        "offset_x": 0,
+        "offset_y": -47,
+        "draw_mode": "normal"
+    },
+    "Small Long Fish": {
+        "name": "Small Long Fish",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "Basic Fish": {
+        "name": "Basic Fish",
+        "radius": 32,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "Troublesome Occurrence": {
+        "name": "Troublesome Occurrence",
+        "radius": 99,
+        "offset_x": 0,
+        "offset_y": -35,
+        "draw_mode": "normal"
+    },
+    "Orcas Attacking Baleen Whale": {
+        "name": "Orcas Attacking Baleen Whale",
+        "radius": 338,
+        "offset_x": 0,
+        "offset_y": -99,
+        "draw_mode": "normal"
+    },
+    "Sea Lion": {
+        "name": "Sea Lion",
+        "radius": 268,
+        "offset_x": 0,
+        "offset_y": -103,
+        "draw_mode": "normal"
+    },
+    "Old Man Winter": {
+        "name": "Old Man Winter",
+        "radius": 79,
+        "offset_x": 0,
+        "offset_y": -31,
+        "draw_mode": "normal"
+    },
+    "Angry Cow": {
+        "name": "Angry Cow",
+        "radius": 72,
+        "offset_x": 0,
+        "offset_y": -30,
+        "draw_mode": "normal"
+    },
+    "Giant Man-Eating Lobster": {
+        "name": "Giant Man- Eating Lobster",
+        "radius": 204,
+        "offset_x": 0,
+        "offset_y": -119,
+        "draw_mode": "normal"
+    },
+    "Tusked Sea Turtle": {
+        "name": "Tusked Sea Turtle",
+        "radius": 187,
+        "offset_x": 0,
+        "offset_y": -51,
+        "draw_mode": "normal"
+    },
+    "Pair of Baleen Whales, Clearly": {
+        "name": "Pair Of Baleen Whales, Clearly",
+        "radius": 287,
+        "offset_x": 0,
+        "offset_y": -192,
+        "draw_mode": "normal"
+    },
+    "Good Lord, What Is It": {
+        "name": "Good Lord, What Is It",
+        "radius": 135,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    },
+    "Crab": {
+        "name": "Crab",
+        "radius": 48,
+        "offset_x": 0,
+        "offset_y": -14,
+        "draw_mode": "normal"
+    },
+    "Panicked Ocean Friend": {
+        "name": "Panicked Ocean Friend",
+        "radius": 78,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "Giant Seahorse vs Giant Lobster": {
+        "name": "Giant Seahorse Vs Giant Lobster",
+        "radius": 225,
+        "offset_x": 0,
+        "offset_y": -253,
+        "draw_mode": "normal"
+    },
+    "Flounder": {
+        "name": "Flounder",
+        "radius": 67,
+        "offset_x": 0,
+        "offset_y": -17,
+        "draw_mode": "normal"
+    },
+    "Geese": {
+        "name": "Geese",
+        "radius": 76,
+        "offset_x": 0,
+        "offset_y": -24,
+        "draw_mode": "normal"
+    },
+    "Small Fat Fish": {
+        "name": "Small Fat Fish",
+        "radius": 33,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "Weird Ray": {
+        "name": "Weird Ray",
+        "radius": 155,
+        "offset_x": 0,
+        "offset_y": -59,
+        "draw_mode": "normal"
+    }
+}

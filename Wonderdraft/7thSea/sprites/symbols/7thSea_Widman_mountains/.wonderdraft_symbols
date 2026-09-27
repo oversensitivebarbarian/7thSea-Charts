@@ -1,0 +1,772 @@
+{
+    "widman_mountain_471": {
+        "name": "Widman Mountain 471",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_389": {
+        "name": "Widman Mountain 389",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_428": {
+        "name": "Widman Mountain 428",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_455": {
+        "name": "Widman Mountain 455",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_473": {
+        "name": "Widman Mountain 473",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_478": {
+        "name": "Widman Mountain 478",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_488": {
+        "name": "Widman Mountain 488",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_429": {
+        "name": "Widman Mountain 429",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_412": {
+        "name": "Widman Mountain 412",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_460": {
+        "name": "Widman Mountain 460",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_391": {
+        "name": "Widman Mountain 391",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_477": {
+        "name": "Widman Mountain 477",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_405": {
+        "name": "Widman Mountain 405",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_430": {
+        "name": "Widman Mountain 430",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_392": {
+        "name": "Widman Mountain 392",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_451": {
+        "name": "Widman Mountain 451",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_434": {
+        "name": "Widman Mountain 434",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_472": {
+        "name": "Widman Mountain 472",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_500": {
+        "name": "Widman Mountain 500",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_426": {
+        "name": "Widman Mountain 426",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_396": {
+        "name": "Widman Mountain 396",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_469": {
+        "name": "Widman Mountain 469",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_421": {
+        "name": "Widman Mountain 421",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_459": {
+        "name": "Widman Mountain 459",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_457": {
+        "name": "Widman Mountain 457",
+        "radius": 8,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_482": {
+        "name": "Widman Mountain 482",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_494": {
+        "name": "Widman Mountain 494",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_454": {
+        "name": "Widman Mountain 454",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_432": {
+        "name": "Widman Mountain 432",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_479": {
+        "name": "Widman Mountain 479",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_447": {
+        "name": "Widman Mountain 447",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_436": {
+        "name": "Widman Mountain 436",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_423": {
+        "name": "Widman Mountain 423",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_450": {
+        "name": "Widman Mountain 450",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_431": {
+        "name": "Widman Mountain 431",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_433": {
+        "name": "Widman Mountain 433",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_485": {
+        "name": "Widman Mountain 485",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_410": {
+        "name": "Widman Mountain 410",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_453": {
+        "name": "Widman Mountain 453",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_463": {
+        "name": "Widman Mountain 463",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_492": {
+        "name": "Widman Mountain 492",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_476": {
+        "name": "Widman Mountain 476",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_489": {
+        "name": "Widman Mountain 489",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_443": {
+        "name": "Widman Mountain 443",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_502": {
+        "name": "Widman Mountain 502",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_416": {
+        "name": "Widman Mountain 416",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_467": {
+        "name": "Widman Mountain 467",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_446": {
+        "name": "Widman Mountain 446",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_414": {
+        "name": "Widman Mountain 414",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_442": {
+        "name": "Widman Mountain 442",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_424": {
+        "name": "Widman Mountain 424",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_474": {
+        "name": "Widman Mountain 474",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_435": {
+        "name": "Widman Mountain 435",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_399": {
+        "name": "Widman Mountain 399",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_413": {
+        "name": "Widman Mountain 413",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_466": {
+        "name": "Widman Mountain 466",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_439": {
+        "name": "Widman Mountain 439",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_427": {
+        "name": "Widman Mountain 427",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_400": {
+        "name": "Widman Mountain 400",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_418": {
+        "name": "Widman Mountain 418",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_438": {
+        "name": "Widman Mountain 438",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_425": {
+        "name": "Widman Mountain 425",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_444": {
+        "name": "Widman Mountain 444",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_480": {
+        "name": "Widman Mountain 480",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_408": {
+        "name": "Widman Mountain 408",
+        "radius": 52,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_398": {
+        "name": "Widman Mountain 398",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_483": {
+        "name": "Widman Mountain 483",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_481": {
+        "name": "Widman Mountain 481",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_493": {
+        "name": "Widman Mountain 493",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_499": {
+        "name": "Widman Mountain 499",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_468": {
+        "name": "Widman Mountain 468",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_470": {
+        "name": "Widman Mountain 470",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_417": {
+        "name": "Widman Mountain 417",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_448": {
+        "name": "Widman Mountain 448",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_397": {
+        "name": "Widman Mountain 397",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_387": {
+        "name": "Widman Mountain 387",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_390": {
+        "name": "Widman Mountain 390",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_437": {
+        "name": "Widman Mountain 437",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_497": {
+        "name": "Widman Mountain 497",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_422": {
+        "name": "Widman Mountain 422",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_409": {
+        "name": "Widman Mountain 409",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_464": {
+        "name": "Widman Mountain 464",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_445": {
+        "name": "Widman Mountain 445",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_415": {
+        "name": "Widman Mountain 415",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_393": {
+        "name": "Widman Mountain 393",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_465": {
+        "name": "Widman Mountain 465",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_411": {
+        "name": "Widman Mountain 411",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_495": {
+        "name": "Widman Mountain 495",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_449": {
+        "name": "Widman Mountain 449",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_461": {
+        "name": "Widman Mountain 461",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_491": {
+        "name": "Widman Mountain 491",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_462": {
+        "name": "Widman Mountain 462",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_406": {
+        "name": "Widman Mountain 406",
+        "radius": 28,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_456": {
+        "name": "Widman Mountain 456",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_501": {
+        "name": "Widman Mountain 501",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_441": {
+        "name": "Widman Mountain 441",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_440": {
+        "name": "Widman Mountain 440",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_484": {
+        "name": "Widman Mountain 484",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_419": {
+        "name": "Widman Mountain 419",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_475": {
+        "name": "Widman Mountain 475",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_452": {
+        "name": "Widman Mountain 452",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_458": {
+        "name": "Widman Mountain 458",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_498": {
+        "name": "Widman Mountain 498",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_490": {
+        "name": "Widman Mountain 490",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_403": {
+        "name": "Widman Mountain 403",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_420": {
+        "name": "Widman Mountain 420",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_388": {
+        "name": "Widman Mountain 388",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_487": {
+        "name": "Widman Mountain 487",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -1,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_496": {
+        "name": "Widman Mountain 496",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_mountain_486": {
+        "name": "Widman Mountain 486",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    }
+}

@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare files
+        run: |
+          mkdir deploy
+          cp index.html deploy/
+          cp i18n.json deploy/
+          cp grid.json deploy/
+          cp legend.png deploy/
+          cp sarmatia_legend.png deploy/
+          cp -r tiles/ deploy/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: gh-pages

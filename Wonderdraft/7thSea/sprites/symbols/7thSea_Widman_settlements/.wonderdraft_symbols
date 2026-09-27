@@ -1,0 +1,1731 @@
+{
+    "widman_settlement_170": {
+        "name": "Widman Settlement 170",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_14": {
+        "name": "Widman Settlement 14",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_30": {
+        "name": "Widman Settlement 30",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_69": {
+        "name": "Widman Settlement 69",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_166": {
+        "name": "Widman Settlement 166",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_206": {
+        "name": "Widman Settlement 206",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_21": {
+        "name": "Widman Settlement 21",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_194": {
+        "name": "Widman Settlement 194",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_231": {
+        "name": "Widman Settlement 231",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_113": {
+        "name": "Widman Settlement 113",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_185": {
+        "name": "Widman Settlement 185",
+        "radius": 35,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_216": {
+        "name": "Widman Settlement 216",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_36": {
+        "name": "Widman Settlement 36",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_18": {
+        "name": "Widman Settlement 18",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_73": {
+        "name": "Widman Settlement 73",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_77": {
+        "name": "Widman Settlement 77",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_161": {
+        "name": "Widman Settlement 161",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_243": {
+        "name": "Widman Settlement 243",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_8": {
+        "name": "Widman Settlement 8",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_49": {
+        "name": "Widman Settlement 49",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_144": {
+        "name": "Widman Settlement 144",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_229": {
+        "name": "Widman Settlement 229",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_59": {
+        "name": "Widman Settlement 59",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_149": {
+        "name": "Widman Settlement 149",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_80": {
+        "name": "Widman Settlement 80",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_160": {
+        "name": "Widman Settlement 160",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_103": {
+        "name": "Widman Settlement 103",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_3": {
+        "name": "Widman Settlement 3",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_130": {
+        "name": "Widman Settlement 130",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_75": {
+        "name": "Widman Settlement 75",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_242": {
+        "name": "Widman Settlement 242",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_171": {
+        "name": "Widman Settlement 171",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_116": {
+        "name": "Widman Settlement 116",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_7": {
+        "name": "Widman Settlement 7",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_34": {
+        "name": "Widman Settlement 34",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_87": {
+        "name": "Widman Settlement 87",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_202": {
+        "name": "Widman Settlement 202",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_108": {
+        "name": "Widman Settlement 108",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_115": {
+        "name": "Widman Settlement 115",
+        "radius": 25,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_135": {
+        "name": "Widman Settlement 135",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_24": {
+        "name": "Widman Settlement 24",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_156": {
+        "name": "Widman Settlement 156",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_61": {
+        "name": "Widman Settlement 61",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_81": {
+        "name": "Widman Settlement 81",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_74": {
+        "name": "Widman Settlement 74",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_244": {
+        "name": "Widman Settlement 244",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_189": {
+        "name": "Widman Settlement 189",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_139": {
+        "name": "Widman Settlement 139",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_168": {
+        "name": "Widman Settlement 168",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_96": {
+        "name": "Widman Settlement 96",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_45": {
+        "name": "Widman Settlement 45",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_134": {
+        "name": "Widman Settlement 134",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_46": {
+        "name": "Widman Settlement 46",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_196": {
+        "name": "Widman Settlement 196",
+        "radius": 30,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_104": {
+        "name": "Widman Settlement 104",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_236": {
+        "name": "Widman Settlement 236",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_27": {
+        "name": "Widman Settlement 27",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_53": {
+        "name": "Widman Settlement 53",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_147": {
+        "name": "Widman Settlement 147",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_205": {
+        "name": "Widman Settlement 205",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_219": {
+        "name": "Widman Settlement 219",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_155": {
+        "name": "Widman Settlement 155",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_199": {
+        "name": "Widman Settlement 199",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_214": {
+        "name": "Widman Settlement 214",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_111": {
+        "name": "Widman Settlement 111",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_208": {
+        "name": "Widman Settlement 208",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_186": {
+        "name": "Widman Settlement 186",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_131": {
+        "name": "Widman Settlement 131",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_188": {
+        "name": "Widman Settlement 188",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_90": {
+        "name": "Widman Settlement 90",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_17": {
+        "name": "Widman Settlement 17",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_221": {
+        "name": "Widman Settlement 221",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_60": {
+        "name": "Widman Settlement 60",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_230": {
+        "name": "Widman Settlement 230",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_35": {
+        "name": "Widman Settlement 35",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_162": {
+        "name": "Widman Settlement 162",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_226": {
+        "name": "Widman Settlement 226",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_32": {
+        "name": "Widman Settlement 32",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_43": {
+        "name": "Widman Settlement 43",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_48": {
+        "name": "Widman Settlement 48",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_215": {
+        "name": "Widman Settlement 215",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_58": {
+        "name": "Widman Settlement 58",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_23": {
+        "name": "Widman Settlement 23",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_22": {
+        "name": "Widman Settlement 22",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_2": {
+        "name": "Widman Settlement 2",
+        "radius": 50,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_163": {
+        "name": "Widman Settlement 163",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_20": {
+        "name": "Widman Settlement 20",
+        "radius": 30,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_238": {
+        "name": "Widman Settlement 238",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_212": {
+        "name": "Widman Settlement 212",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_31": {
+        "name": "Widman Settlement 31",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_152": {
+        "name": "Widman Settlement 152",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_25": {
+        "name": "Widman Settlement 25",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_235": {
+        "name": "Widman Settlement 235",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_207": {
+        "name": "Widman Settlement 207",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_240": {
+        "name": "Widman Settlement 240",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_217": {
+        "name": "Widman Settlement 217",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_165": {
+        "name": "Widman Settlement 165",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_112": {
+        "name": "Widman Settlement 112",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_169": {
+        "name": "Widman Settlement 169",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_203": {
+        "name": "Widman Settlement 203",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_174": {
+        "name": "Widman Settlement 174",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_63": {
+        "name": "Widman Settlement 63",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_42": {
+        "name": "Widman Settlement 42",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_136": {
+        "name": "Widman Settlement 136",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_83": {
+        "name": "Widman Settlement 83",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_253": {
+        "name": "Widman Settlement 253",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_19": {
+        "name": "Widman Settlement 19",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_117": {
+        "name": "Widman Settlement 117",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_252": {
+        "name": "Widman Settlement 252",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_228": {
+        "name": "Widman Settlement 228",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_62": {
+        "name": "Widman Settlement 62",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_145": {
+        "name": "Widman Settlement 145",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_211": {
+        "name": "Widman Settlement 211",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_234": {
+        "name": "Widman Settlement 234",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_114": {
+        "name": "Widman Settlement 114",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_9": {
+        "name": "Widman Settlement 9",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_200": {
+        "name": "Widman Settlement 200",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_28": {
+        "name": "Widman Settlement 28",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_15": {
+        "name": "Widman Settlement 15",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_66": {
+        "name": "Widman Settlement 66",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_138": {
+        "name": "Widman Settlement 138",
+        "radius": 25,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_193": {
+        "name": "Widman Settlement 193",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_94": {
+        "name": "Widman Settlement 94",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_220": {
+        "name": "Widman Settlement 220",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_157": {
+        "name": "Widman Settlement 157",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_10": {
+        "name": "Widman Settlement 10",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_33": {
+        "name": "Widman Settlement 33",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_140": {
+        "name": "Widman Settlement 140",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_148": {
+        "name": "Widman Settlement 148",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_164": {
+        "name": "Widman Settlement 164",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_190": {
+        "name": "Widman Settlement 190",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_26": {
+        "name": "Widman Settlement 26",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_70": {
+        "name": "Widman Settlement 70",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_121": {
+        "name": "Widman Settlement 121",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_44": {
+        "name": "Widman Settlement 44",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_37": {
+        "name": "Widman Settlement 37",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_124": {
+        "name": "Widman Settlement 124",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_89": {
+        "name": "Widman Settlement 89",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_178": {
+        "name": "Widman Settlement 178",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_245": {
+        "name": "Widman Settlement 245",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_102": {
+        "name": "Widman Settlement 102",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_227": {
+        "name": "Widman Settlement 227",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_82": {
+        "name": "Widman Settlement 82",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_198": {
+        "name": "Widman Settlement 198",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_209": {
+        "name": "Widman Settlement 209",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_93": {
+        "name": "Widman Settlement 93",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_218": {
+        "name": "Widman Settlement 218",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_195": {
+        "name": "Widman Settlement 195",
+        "radius": 33,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_158": {
+        "name": "Widman Settlement 158",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_239": {
+        "name": "Widman Settlement 239",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_106": {
+        "name": "Widman Settlement 106",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_118": {
+        "name": "Widman Settlement 118",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_38": {
+        "name": "Widman Settlement 38",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_79": {
+        "name": "Widman Settlement 79",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_52": {
+        "name": "Widman Settlement 52",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_128": {
+        "name": "Widman Settlement 128",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_182": {
+        "name": "Widman Settlement 182",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_39": {
+        "name": "Widman Settlement 39",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_107": {
+        "name": "Widman Settlement 107",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_86": {
+        "name": "Widman Settlement 86",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_13": {
+        "name": "Widman Settlement 13",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_71": {
+        "name": "Widman Settlement 71",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_78": {
+        "name": "Widman Settlement 78",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_250": {
+        "name": "Widman Settlement 250",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_67": {
+        "name": "Widman Settlement 67",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_97": {
+        "name": "Widman Settlement 97",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_56": {
+        "name": "Widman Settlement 56",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_143": {
+        "name": "Widman Settlement 143",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_241": {
+        "name": "Widman Settlement 241",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_153": {
+        "name": "Widman Settlement 153",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -19,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_173": {
+        "name": "Widman Settlement 173",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_57": {
+        "name": "Widman Settlement 57",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_232": {
+        "name": "Widman Settlement 232",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_223": {
+        "name": "Widman Settlement 223",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_109": {
+        "name": "Widman Settlement 109",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_101": {
+        "name": "Widman Settlement 101",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_176": {
+        "name": "Widman Settlement 176",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_110": {
+        "name": "Widman Settlement 110",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_180": {
+        "name": "Widman Settlement 180",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_154": {
+        "name": "Widman Settlement 154",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_225": {
+        "name": "Widman Settlement 225",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_119": {
+        "name": "Widman Settlement 119",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_92": {
+        "name": "Widman Settlement 92",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_142": {
+        "name": "Widman Settlement 142",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_187": {
+        "name": "Widman Settlement 187",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_224": {
+        "name": "Widman Settlement 224",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_177": {
+        "name": "Widman Settlement 177",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_76": {
+        "name": "Widman Settlement 76",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_184": {
+        "name": "Widman Settlement 184",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_98": {
+        "name": "Widman Settlement 98",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_1": {
+        "name": "Widman Settlement 1",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_65": {
+        "name": "Widman Settlement 65",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_29": {
+        "name": "Widman Settlement 29",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_213": {
+        "name": "Widman Settlement 213",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_132": {
+        "name": "Widman Settlement 132",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_50": {
+        "name": "Widman Settlement 50",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_192": {
+        "name": "Widman Settlement 192",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_12": {
+        "name": "Widman Settlement 12",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_105": {
+        "name": "Widman Settlement 105",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_151": {
+        "name": "Widman Settlement 151",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_55": {
+        "name": "Widman Settlement 55",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_210": {
+        "name": "Widman Settlement 210",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_181": {
+        "name": "Widman Settlement 181",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_249": {
+        "name": "Widman Settlement 249",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_129": {
+        "name": "Widman Settlement 129",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_41": {
+        "name": "Widman Settlement 41",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_64": {
+        "name": "Widman Settlement 64",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_47": {
+        "name": "Widman Settlement 47",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_237": {
+        "name": "Widman Settlement 237",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_5": {
+        "name": "Widman Settlement 5",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_91": {
+        "name": "Widman Settlement 91",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_172": {
+        "name": "Widman Settlement 172",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_233": {
+        "name": "Widman Settlement 233",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_85": {
+        "name": "Widman Settlement 85",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_122": {
+        "name": "Widman Settlement 122",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_99": {
+        "name": "Widman Settlement 99",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_120": {
+        "name": "Widman Settlement 120",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_191": {
+        "name": "Widman Settlement 191",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_159": {
+        "name": "Widman Settlement 159",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_150": {
+        "name": "Widman Settlement 150",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_246": {
+        "name": "Widman Settlement 246",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_126": {
+        "name": "Widman Settlement 126",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_127": {
+        "name": "Widman Settlement 127",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_72": {
+        "name": "Widman Settlement 72",
+        "radius": 19,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_123": {
+        "name": "Widman Settlement 123",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_133": {
+        "name": "Widman Settlement 133",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_16": {
+        "name": "Widman Settlement 16",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_141": {
+        "name": "Widman Settlement 141",
+        "radius": 17,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_68": {
+        "name": "Widman Settlement 68",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_95": {
+        "name": "Widman Settlement 95",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_146": {
+        "name": "Widman Settlement 146",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_248": {
+        "name": "Widman Settlement 248",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_6": {
+        "name": "Widman Settlement 6",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_251": {
+        "name": "Widman Settlement 251",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_40": {
+        "name": "Widman Settlement 40",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_197": {
+        "name": "Widman Settlement 197",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_175": {
+        "name": "Widman Settlement 175",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_51": {
+        "name": "Widman Settlement 51",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_100": {
+        "name": "Widman Settlement 100",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_183": {
+        "name": "Widman Settlement 183",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_54": {
+        "name": "Widman Settlement 54",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_137": {
+        "name": "Widman Settlement 137",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_222": {
+        "name": "Widman Settlement 222",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_84": {
+        "name": "Widman Settlement 84",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_201": {
+        "name": "Widman Settlement 201",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_88": {
+        "name": "Widman Settlement 88",
+        "radius": 22,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_settlement_4": {
+        "name": "Widman Settlement 4",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    }
+}

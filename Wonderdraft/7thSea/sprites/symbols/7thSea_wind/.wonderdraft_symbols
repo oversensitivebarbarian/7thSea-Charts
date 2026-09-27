@@ -1,0 +1,93 @@
+{
+    "05 - South East Wind": {
+        "name": "05 - South East Wind",
+        "radius": 195,
+        "offset_x": 0,
+        "offset_y": -43,
+        "draw_mode": "normal"
+    },
+    "13 - Globe": {
+        "name": "13 - Globe",
+        "radius": 1026,
+        "offset_x": 0,
+        "offset_y": -487,
+        "draw_mode": "normal"
+    },
+    "09 - South West Wind": {
+        "name": "09 - South West Wind",
+        "radius": 201,
+        "offset_x": 0,
+        "offset_y": -48,
+        "draw_mode": "normal"
+    },
+    "04 - East Wind": {
+        "name": "04 - East Wind",
+        "radius": 176,
+        "offset_x": 0,
+        "offset_y": -57,
+        "draw_mode": "normal"
+    },
+    "02 - North North East Wind": {
+        "name": "02 - North North East Wind",
+        "radius": 251,
+        "offset_x": 0,
+        "offset_y": -75,
+        "draw_mode": "normal"
+    },
+    "07 - South Wind": {
+        "name": "07 - South Wind",
+        "radius": 179,
+        "offset_x": 0,
+        "offset_y": -91,
+        "draw_mode": "normal"
+    },
+    "10 - West Wind": {
+        "name": "10 - West Wind",
+        "radius": 223,
+        "offset_x": 0,
+        "offset_y": -86,
+        "draw_mode": "normal"
+    },
+    "03 - North East Wind": {
+        "name": "03 - North East Wind",
+        "radius": 197,
+        "offset_x": 0,
+        "offset_y": -58,
+        "draw_mode": "normal"
+    },
+    "06 - South South East Wind": {
+        "name": "06 - South South East Wind",
+        "radius": 231,
+        "offset_x": 0,
+        "offset_y": -63,
+        "draw_mode": "normal"
+    },
+    "11 - North West Wind": {
+        "name": "11 - North West Wind",
+        "radius": 221,
+        "offset_x": 0,
+        "offset_y": -62,
+        "draw_mode": "normal"
+    },
+    "12 - North North West Wind": {
+        "name": "12 - North North West Wind",
+        "radius": 231,
+        "offset_x": 0,
+        "offset_y": -66,
+        "draw_mode": "normal"
+    },
+    "08 - South South West Wind": {
+        "name": "08 - South South West Wind",
+        "radius": 267,
+        "offset_x": 0,
+        "offset_y": -102,
+        "draw_mode": "normal"
+    },
+    "01 - North Wind": {
+        "name": "01 - North Wind",
+        "radius": 170,
+        "offset_x": 0,
+        "offset_y": -104,
+        "draw_mode": "normal"
+    }
+}

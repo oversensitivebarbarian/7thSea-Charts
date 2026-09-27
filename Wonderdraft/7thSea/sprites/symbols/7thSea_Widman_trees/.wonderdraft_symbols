@@ -1,0 +1,695 @@
+{
+    "widman_tree_309": {
+        "name": "Widman Tree 309",
+        "radius": 51,
+        "offset_x": 0,
+        "offset_y": -27,
+        "draw_mode": "normal"
+    },
+    "widman_tree_325": {
+        "name": "Widman Tree 325",
+        "radius": 36,
+        "offset_x": 0,
+        "offset_y": -10,
+        "draw_mode": "normal"
+    },
+    "widman_tree_329": {
+        "name": "Widman Tree 329",
+        "radius": 42,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_tree_314": {
+        "name": "Widman Tree 314",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "widman_tree_255": {
+        "name": "Widman Tree 255",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_312": {
+        "name": "Widman Tree 312",
+        "radius": 30,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "widman_tree_310": {
+        "name": "Widman Tree 310",
+        "radius": 50,
+        "offset_x": 0,
+        "offset_y": -18,
+        "draw_mode": "normal"
+    },
+    "widman_tree_293": {
+        "name": "Widman Tree 293",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_tree_277": {
+        "name": "Widman Tree 277",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_342": {
+        "name": "Widman Tree 342",
+        "radius": 51,
+        "offset_x": 0,
+        "offset_y": -23,
+        "draw_mode": "normal"
+    },
+    "widman_tree_344": {
+        "name": "Widman Tree 344",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_262": {
+        "name": "Widman Tree 262",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_347": {
+        "name": "Widman Tree 347",
+        "radius": 28,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_266": {
+        "name": "Widman Tree 266",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_338": {
+        "name": "Widman Tree 338",
+        "radius": 34,
+        "offset_x": 0,
+        "offset_y": -26,
+        "draw_mode": "normal"
+    },
+    "widman_tree_256": {
+        "name": "Widman Tree 256",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_281": {
+        "name": "Widman Tree 281",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_287": {
+        "name": "Widman Tree 287",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_318": {
+        "name": "Widman Tree 318",
+        "radius": 35,
+        "offset_x": 0,
+        "offset_y": -14,
+        "draw_mode": "normal"
+    },
+    "widman_tree_278": {
+        "name": "Widman Tree 278",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_268": {
+        "name": "Widman Tree 268",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_331": {
+        "name": "Widman Tree 331",
+        "radius": 23,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_tree_333": {
+        "name": "Widman Tree 333",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -2,
+        "draw_mode": "normal"
+    },
+    "widman_tree_296": {
+        "name": "Widman Tree 296",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_289": {
+        "name": "Widman Tree 289",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_264": {
+        "name": "Widman Tree 264",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_298": {
+        "name": "Widman Tree 298",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_260": {
+        "name": "Widman Tree 260",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_305": {
+        "name": "Widman Tree 305",
+        "radius": 25,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_270": {
+        "name": "Widman Tree 270",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_336": {
+        "name": "Widman Tree 336",
+        "radius": 33,
+        "offset_x": 0,
+        "offset_y": -26,
+        "draw_mode": "normal"
+    },
+    "widman_tree_328": {
+        "name": "Widman Tree 328",
+        "radius": 31,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_346": {
+        "name": "Widman Tree 346",
+        "radius": 32,
+        "offset_x": 0,
+        "offset_y": -9,
+        "draw_mode": "normal"
+    },
+    "widman_tree_292": {
+        "name": "Widman Tree 292",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_332": {
+        "name": "Widman Tree 332",
+        "radius": 32,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_317": {
+        "name": "Widman Tree 317",
+        "radius": 26,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_290": {
+        "name": "Widman Tree 290",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_345": {
+        "name": "Widman Tree 345",
+        "radius": 35,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_304": {
+        "name": "Widman Tree 304",
+        "radius": 30,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_tree_348": {
+        "name": "Widman Tree 348",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_254": {
+        "name": "Widman Tree 254",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_261": {
+        "name": "Widman Tree 261",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_306": {
+        "name": "Widman Tree 306",
+        "radius": 41,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_tree_351": {
+        "name": "Widman Tree 351",
+        "radius": 31,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_tree_286": {
+        "name": "Widman Tree 286",
+        "radius": 15,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_297": {
+        "name": "Widman Tree 297",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_301": {
+        "name": "Widman Tree 301",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_294": {
+        "name": "Widman Tree 294",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_284": {
+        "name": "Widman Tree 284",
+        "radius": 16,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_327": {
+        "name": "Widman Tree 327",
+        "radius": 47,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "widman_tree_259": {
+        "name": "Widman Tree 259",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_272": {
+        "name": "Widman Tree 272",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_340": {
+        "name": "Widman Tree 340",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_319": {
+        "name": "Widman Tree 319",
+        "radius": 43,
+        "offset_x": 0,
+        "offset_y": -56,
+        "draw_mode": "normal"
+    },
+    "widman_tree_276": {
+        "name": "Widman Tree 276",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_273": {
+        "name": "Widman Tree 273",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_274": {
+        "name": "Widman Tree 274",
+        "radius": 10,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_279": {
+        "name": "Widman Tree 279",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_313": {
+        "name": "Widman Tree 313",
+        "radius": 21,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_tree_320": {
+        "name": "Widman Tree 320",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_303": {
+        "name": "Widman Tree 303",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_337": {
+        "name": "Widman Tree 337",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_280": {
+        "name": "Widman Tree 280",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_349": {
+        "name": "Widman Tree 349",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_258": {
+        "name": "Widman Tree 258",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_300": {
+        "name": "Widman Tree 300",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_341": {
+        "name": "Widman Tree 341",
+        "radius": 55,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "widman_tree_324": {
+        "name": "Widman Tree 324",
+        "radius": 57,
+        "offset_x": 0,
+        "offset_y": -20,
+        "draw_mode": "normal"
+    },
+    "widman_tree_275": {
+        "name": "Widman Tree 275",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_282": {
+        "name": "Widman Tree 282",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_299": {
+        "name": "Widman Tree 299",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_350": {
+        "name": "Widman Tree 350",
+        "radius": 42,
+        "offset_x": 0,
+        "offset_y": -17,
+        "draw_mode": "normal"
+    },
+    "widman_tree_311": {
+        "name": "Widman Tree 311",
+        "radius": 20,
+        "offset_x": 0,
+        "offset_y": -22,
+        "draw_mode": "normal"
+    },
+    "widman_tree_257": {
+        "name": "Widman Tree 257",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_283": {
+        "name": "Widman Tree 283",
+        "radius": 13,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_tree_269": {
+        "name": "Widman Tree 269",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_271": {
+        "name": "Widman Tree 271",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -7,
+        "draw_mode": "normal"
+    },
+    "widman_tree_308": {
+        "name": "Widman Tree 308",
+        "radius": 40,
+        "offset_x": 0,
+        "offset_y": -15,
+        "draw_mode": "normal"
+    },
+    "widman_tree_263": {
+        "name": "Widman Tree 263",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_339": {
+        "name": "Widman Tree 339",
+        "radius": 27,
+        "offset_x": 0,
+        "offset_y": -17,
+        "draw_mode": "normal"
+    },
+    "widman_tree_322": {
+        "name": "Widman Tree 322",
+        "radius": 56,
+        "offset_x": 0,
+        "offset_y": -16,
+        "draw_mode": "normal"
+    },
+    "widman_tree_291": {
+        "name": "Widman Tree 291",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_326": {
+        "name": "Widman Tree 326",
+        "radius": 47,
+        "offset_x": 0,
+        "offset_y": -14,
+        "draw_mode": "normal"
+    },
+    "widman_tree_302": {
+        "name": "Widman Tree 302",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_335": {
+        "name": "Widman Tree 335",
+        "radius": 59,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "widman_tree_330": {
+        "name": "Widman Tree 330",
+        "radius": 25,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    },
+    "widman_tree_315": {
+        "name": "Widman Tree 315",
+        "radius": 29,
+        "offset_x": 0,
+        "offset_y": -12,
+        "draw_mode": "normal"
+    },
+    "widman_tree_323": {
+        "name": "Widman Tree 323",
+        "radius": 34,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_tree_307": {
+        "name": "Widman Tree 307",
+        "radius": 18,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_288": {
+        "name": "Widman Tree 288",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_265": {
+        "name": "Widman Tree 265",
+        "radius": 11,
+        "offset_x": 0,
+        "offset_y": -4,
+        "draw_mode": "normal"
+    },
+    "widman_tree_267": {
+        "name": "Widman Tree 267",
+        "radius": 9,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_334": {
+        "name": "Widman Tree 334",
+        "radius": 65,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_tree_285": {
+        "name": "Widman Tree 285",
+        "radius": 12,
+        "offset_x": 0,
+        "offset_y": -5,
+        "draw_mode": "normal"
+    },
+    "widman_tree_316": {
+        "name": "Widman Tree 316",
+        "radius": 35,
+        "offset_x": 0,
+        "offset_y": -11,
+        "draw_mode": "normal"
+    },
+    "widman_tree_295": {
+        "name": "Widman Tree 295",
+        "radius": 14,
+        "offset_x": 0,
+        "offset_y": -6,
+        "draw_mode": "normal"
+    },
+    "widman_tree_352": {
+        "name": "Widman Tree 352",
+        "radius": 39,
+        "offset_x": 0,
+        "offset_y": -8,
+        "draw_mode": "normal"
+    },
+    "widman_tree_321": {
+        "name": "Widman Tree 321",
+        "radius": 42,
+        "offset_x": 0,
+        "offset_y": -13,
+        "draw_mode": "normal"
+    },
+    "widman_tree_343": {
+        "name": "Widman Tree 343",
+        "radius": 24,
+        "offset_x": 0,
+        "offset_y": -3,
+        "draw_mode": "normal"
+    }
+}

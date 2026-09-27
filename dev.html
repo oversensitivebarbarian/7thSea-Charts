@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<!--
+  globe.html — Interactive 3D globe for 7th Sea 
+  ============================================================
+
+  ARCHITECTURE
+  ------------
+  Uses Three.js r128 (CDN) to render a 3D sphere in WebGL.
+  The sphere consists of two layers:
+    1. Equirectangular tiles — cover the band between LAT_CAP_DEG N/S
+    2. Gnomonic polar caps  — cover the poles from LAT_CAP_DEG to 90°
+
+  POLAR CAPS — GNOMONIC PROJECTION
+  ----------------------------------
+  Gnomonic projection (tangent to the pole) maps each point on the sphere
+  onto a plane tangent to the pole along a radius through the sphere center.
+  Formulas:
+    r = tan(angular_distance_from_pole)   (distance from texture center)
+    φ = azimuth                           (angle in texture)
+
+  Advantages over equirectangular at poles:
+    - No horizontal stretching (sinθ → 0 near the pole)
+    - Natural proportions of polar regions
+    - Straight lines (great circles through the pole) remain straight in the image
+
+  GEOMETRY buildPolarCapGeo(isNorth, segR, segPhi):
+    Creates a spherical disk — ring of vertices from LAT_CAP_DEG to 90°.
+    UV for each vertex comes from gnomonic projection:
+      u = 0.5 + r·cos(azimuth) / (2·r_max)
+      v = 0.5 + r·sin(azimuth) / (2·r_max)
+    where r = tan(π/2 − |lat|),  r_max = tan(π/2 − LAT_CAP_RAD)
+
+  EQUIRECTANGULAR TILE CLIPPING
+  -----------------------------------
+  buildTileGeo() accepts optional thetaMin/thetaMax — if provided,
+  the tile geometry is clipped to that range. For row=0 (north pole)
+  thetaMin = LAT_CAP_RAD (instead of 0), for row=rows-1 thetaMax = π − LAT_CAP_RAD.
+  UVs are recalculated relative to the original tile range so the texture
+  is not deformed — only the geometry is clipped.
+
+  BLEND ZONE — SEAM REMOVAL
+  ------------------------------
+  Polar tiles start at BLEND_LAT_DEG = LAT_CAP_DEG − 5° with alpha=0,
+  and reach alpha=1 at LAT_CAP_DEG. The shader (vertex color +
+  MeshBasicMaterial.vertexColors) interpolates this transparency.
+  Equirectangular polar tiles have the inverse blend (1 → 0 at the edge).
+
+  KEY ISSUE: X-AXIS MIRRORING ON THE SPHERE
+  ------------------------------------------
+  Viewing the Three.js sphere from outside, the X axis is flipped relative
+  to a flat equirectangular map:
+    - 2D map:   lon increases → W to E (left to right)
+    - 3D sphere: increasing phi = rotation to the left (E on the left)
+
+  Two-step solution:
+  1. gen_tiles.py: PNG tiles are flipped horizontally (FLIP_LEFT_RIGHT)
+  2. buildTileGeo(): phiStart = PI - (col+1)*phiLen  [reversed order]
+
+  For polar caps: azimuth is reversed (negated) to maintain
+  consistency with the E/W direction of equirectangular tiles.
+
+  FILES
+  -----
+  globe.html          — this file
+  gen_tiles.py        — equirectangular tile generator
+  gen_polar_tiles.py  — polar tile generator (gnomonic projection)
+  tiles/far/          — 32 FAR equirectangular tiles
+  tiles/near/         — NEAR equirectangular tiles (count from grid.json)
+  tiles/polar_n.webp  — north polar cap (gnomonic, 2048×2048)
+  tiles/polar_s.webp  — south polar cap (gnomonic, 2048×2048)
+
+  RUNNING
+  ------------
+  Requires a local HTTP server:
+    python3 -m http.server 8000
+  Then visit: http://localhost:8000/globe.html
+-->
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>7th Sea — Terra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ── CSS Variables ── */
+:root{
+  --gold:#e8b830;       /* gold accent */
+  --gold-d:#c8960c;     /* darker gold (hover, lines) */
+  --border:#8b6914;     /* panel borders */
+  --ink:#0e0b06;        /* background — nearly black with a hint of brown */
+  --panel:rgba(8,5,2,0.88); /* HUD panel background */
+  --txt:#d4c49a;        /* primary text — parchment */
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--ink);
+  color:var(--txt);
+  font-family:'Cinzel',serif;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  user-select:none; /* prevent text selection during drag */
+}
+
+
+
+/* ── Main rendering area ── */
+#wrap{
+  flex:1;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+}
+
+/* Three.js canvas — fills the entire area */
+canvas#c{
+  display:block;width:100%;height:100%;
+  cursor:grab;position:relative;z-index:2;
+}
+canvas#c:active{cursor:grabbing;}
+
+/* ── Info badge (top center) ── */
+#badge-view{
+  position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  z-index:8;
+  background:var(--panel);border:1px solid var(--border);border-radius:20px;
+  padding:4px 16px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;backdrop-filter:blur(6px);white-space:nowrap;
+}
+
+/* ── Legend toggle button (bottom right, above zoom badge) ── */
+#legend-btn{
+  position:absolute;bottom:48px;right:16px;z-index:9;
+  background:var(--panel);border:1px solid var(--border);border-radius:20px;
+  padding:4px 14px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--txt);font-family:'Cinzel',serif;
+  cursor:pointer;backdrop-filter:blur(6px);white-space:nowrap;
+}
+#legend-btn:hover{ border-color:var(--gold-d);color:var(--gold); }
+
+/* ── Zoom badge (bottom right) ── */
+#badge-zoom{
+  position:absolute;bottom:12px;right:16px;z-index:8;
+  background:var(--panel);border:1px solid var(--border);border-radius:4px;
+  padding:3px 11px;font-size:.63rem;letter-spacing:.1em;pointer-events:none;
+}
+
+/* ── Language selector (top right) ── */
+#lang-wrap{
+  position:absolute;top:12px;right:16px;z-index:8;
+}
+#lang-btn{
+  background:var(--panel);border:1px solid var(--border);border-radius:20px;
+  padding:4px 14px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--txt);font-family:'Cinzel',serif;
+  cursor:pointer;backdrop-filter:blur(6px);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+#lang-btn:hover{ border-color:var(--gold-d);color:var(--gold); }
+#lang-btn::after{ content:'▾';font-size:.6rem;opacity:.7; }
+#lang-dropdown{
+  display:none;
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--panel);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;backdrop-filter:blur(8px);
+  min-width:140px;
+}
+#lang-wrap.open #lang-dropdown{ display:block; }
+.lang-option{
+  display:block;width:100%;text-align:left;
+  padding:7px 16px;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--txt);font-family:'Cinzel',serif;background:none;border:none;
+  cursor:pointer;white-space:nowrap;
+}
+.lang-option:hover{ background:rgba(232,184,48,.12);color:var(--gold); }
+.lang-option.active{ color:var(--gold);font-weight:600; }
+
+/* ── Debug mode ── */
+#dbg-tooltip{
+  position:fixed;
+  background:rgba(0,0,0,.82);
+  color:#ff6633;
+  font-family:monospace;
+  font-size:.72rem;
+  padding:4px 9px;
+  border-radius:3px;
+  border:1px solid #ff6633;
+  pointer-events:none;
+  z-index:100;
+  white-space:nowrap;
+  display:none;
+}
+#loading{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,#060d1a 0%,#010308 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0;
+  z-index:50;
+  transition:opacity .8s ease;
+}
+#loading.out{opacity:0;pointer-events:none;}
+.spin{
+  width:64px;height:64px;
+  animation:spin 3s linear infinite;
+  margin-bottom:24px;
+  filter:drop-shadow(0 0 14px rgba(58,143,255,.5));
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.95rem;letter-spacing:.18em;
+  color:#5aabff;
+  text-shadow:0 0 20px rgba(58,143,255,.6);
+  margin-bottom:6px;
+}
+.load-txt{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:#8bbfdf;opacity:.65;
+  margin-bottom:28px;
+  min-height:1em;
+}
+/* Progress bar */
+.load-bar-wrap{
+  width:240px;
+  height:3px;
+  background:rgba(30,80,160,.25);
+  border-radius:2px;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+.load-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, #1a4aaa, #5aabff);
+  border-radius:2px;
+  transition:width .25s ease;
+  box-shadow:0 0 8px rgba(58,143,255,.7);
+}
+.load-count{
+  font-size:.58rem;letter-spacing:.12em;
+  color:#6a9bbf;opacity:.5;
+}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.7}}
+</style>
+</head>
+<body>
+
+
+
+<!-- ── GLOBE AREA ── -->
+<div id="wrap">
+  <!-- Main Three.js / WebGL canvas -->
+  <canvas id="c"></canvas>
+
+  <!-- Coordinates display -->
+  <div id="coords" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+    color:rgba(255,255,255,0.7);font:13px/1 monospace;pointer-events:none;
+    text-shadow:0 1px 3px #000;letter-spacing:.04em;"></div>
+
+  <!-- Language selector — top right -->
+  <div id="lang-wrap">
+    <button id="lang-btn" aria-haspopup="listbox">Théah</button>
+    <div id="lang-dropdown" role="listbox"></div>
+  </div>
+
+  <!-- Loading screen — disappears after all tiles and polar caps are loaded -->
+  <div id="loading">
+    <svg class="spin" viewBox="0 0 60 60" fill="none">
+      <circle cx="30" cy="30" r="27" stroke="#1a5aaa" stroke-width="1.6" fill="none" stroke-dasharray="6 3"/>
+      <polygon points="30,5 34,26 26,26" fill="#5aabff"/>
+      <polygon points="30,55 26,34 34,34" fill="#1a4a8a"/>
+      <circle cx="30" cy="30" r="4" fill="#5aabff"/>
+    </svg>
+    <div class="load-title">7th Sea</div>
+    <div class="load-txt" id="load-phase">Preparing the maps of Théah…</div>
+    <div class="load-bar-wrap">
+      <div class="load-bar" id="load-bar"></div>
+    </div>
+    <div class="load-count" id="load-count">0 / 0</div>
+  </div>
+
+  <!-- Debug mode tooltip -->
+  <div id="dbg-tooltip"></div>
+
+  <!-- Legend image — bottom right corner, hidden by default -->
+  <img id="legend" src="legend.png"
+       style="position:absolute;bottom:90px;right:48px;z-index:8;
+              max-width:260px;max-height:40vh;
+              pointer-events:none;display:none;"
+       onerror="this.style.display='none'"
+       alt="Legenda">
+  <!-- Legend toggle button -->
+  <button id="legend-btn">Legenda</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════════════════════════════════
+// DEBUG MODE
+// Set DEBUG = true to enable:
+//   - red outline around the tile under the cursor
+//   - tooltip with the tile filename
+// ═══════════════════════════════════════════════════════════════════════
+const DEBUG = true;
+
+// ═══════════════════════════════════════════════════════════════════════
+// THREE.JS — scene initialization
+// ═══════════════════════════════════════════════════════════════════════
+const wrap     = document.getElementById('wrap');
+const canvas   = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x000000, 1);
+
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 50);
+
+// Camera distances for two zoom levels (sphere radius = 1.0)
+const ZOOM_DIST = [3.4, 1.15];
+let zoomIdx = 0;
+camera.position.z = ZOOM_DIST[0];
+
+// Full ambient lighting — textures visible without shadows
+scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+
+// Globe rotates as a group — group rotation = camera orbit around the sphere
+const globeGroup = new THREE.Group();
+// lon=0° of the map sits at phi=0 (the +X axis in sphere geometry).
+// Camera starts at +Z, so rotate the globe 90° around Y so the
+// map's lon=0° faces the camera on startup.
+globeGroup.rotation.y = -Math.PI / 2;
+scene.add(globeGroup);
+
+// Fit renderer to container size
+function onResize() {
+  const w = wrap.clientWidth, h = wrap.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', onResize);
+onResize();
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STARFIELD — procedural sphere, rotates with globeGroup for parallax
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Stars are painted on an offscreen canvas, then used as a texture
+// on a large BackSide sphere. The sphere is added to globeGroup so it
+// rotates together with the globe — giving the illusion that the stars
+// move in 3D space when the user drags.
+//
+// Radius = 20 (far beyond the globe at r=1 and the far clip plane = 50).
+// renderOrder = -1 ensures it's drawn before all other objects.
+//
+(function buildStarfield() {
+  // Load Stellarium screenshot panorama as starfield texture
+  new THREE.TextureLoader().load('tiles/stars_babylon.webp', tex => {
+    tex.wrapS = THREE.ClampToEdgeWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    const geo  = new THREE.SphereGeometry(20, 64, 32);
+    const mat  = new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, depthWrite: false });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.renderOrder = -1;
+    mesh.isStarfield = true;
+    globeGroup.add(mesh);
+  });
+  return; // skip procedural generation below
+  // Generate star texture on an offscreen canvas
+  // 4096×2048 equirectangular texture for the full sphere — no repeat needed
+  const W = 4096, H = 2048;
+  const cv     = document.createElement('canvas');
+  cv.width     = W;
+  cv.height    = H;
+  const ctx    = cv.getContext('2d');
+
+  // Pure black base
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, W, H);
+
+  // Seed-based pseudo-random for reproducibility
+  let seed = 137;
+  function rand() {
+    seed = (seed * 1664525 + 1013904223) & 0xffffffff;
+    return (seed >>> 0) / 0xffffffff;
+  }
+
+  // ── Milky Way band — soft nebula glow along the equator ──
+  // Two overlapping diagonal bands simulate the galactic plane
+  const bands = [
+    { cx: W * 0.5, cy: H * 0.48, rx: W * 0.9, ry: H * 0.09, a: 0.10 },
+    { cx: W * 0.5, cy: H * 0.52, rx: W * 0.8, ry: H * 0.07, a: 0.07 },
+    { cx: W * 0.2, cy: H * 0.45, rx: W * 0.4, ry: H * 0.06, a: 0.06 },
+    { cx: W * 0.8, cy: H * 0.55, rx: W * 0.4, ry: H * 0.06, a: 0.05 },
+  ];
+  bands.forEach(b => {
+    const g = ctx.createRadialGradient(b.cx, b.cy, 0, b.cx, b.cy, Math.max(b.rx, b.ry));
+    g.addColorStop(0,   `rgba(160,170,220,${b.a})`);
+    g.addColorStop(0.5, `rgba(120,130,190,${b.a * 0.4})`);
+    g.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.save();
+    ctx.translate(b.cx, b.cy);
+    ctx.scale(b.rx / Math.max(b.rx, b.ry), b.ry / Math.max(b.rx, b.ry));
+    ctx.beginPath();
+    ctx.arc(0, 0, Math.max(b.rx, b.ry), 0, Math.PI * 2);
+    ctx.fillStyle = g;
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // ── 4000 small background stars ──
+  for (let i = 0; i < 4000; i++) {
+    const x     = rand() * W;
+    const y     = rand() * H;
+    const r     = rand() * 0.8 + 0.15;
+    const alpha = rand() * 0.5 + 0.2;
+    const hue   = 200 + (rand() * 60 - 30);
+    const sat   = Math.round(rand() * 25);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${hue},${sat}%,100%,${alpha.toFixed(2)})`;
+    ctx.fill();
+  }
+
+  // ── 800 medium stars ──
+  for (let i = 0; i < 800; i++) {
+    const x     = rand() * W;
+    const y     = rand() * H;
+    const r     = rand() * 1.2 + 0.6;
+    const alpha = rand() * 0.45 + 0.35;
+    const hue   = 200 + (rand() * 80 - 40);
+    const sat   = Math.round(rand() * 20);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${hue},${sat}%,100%,${alpha.toFixed(2)})`;
+    ctx.fill();
+  }
+
+  // ── 60 bright "hero" stars with soft glow ──
+  for (let i = 0; i < 60; i++) {
+    const x   = rand() * W;
+    const y   = rand() * H;
+    const r   = rand() * 1.5 + 1.0;
+    const glow = ctx.createRadialGradient(x, y, 0, x, y, r * 5);
+    glow.addColorStop(0,   'rgba(230,240,255,0.95)');
+    glow.addColorStop(0.3, 'rgba(200,220,255,0.35)');
+    glow.addColorStop(1,   'rgba(180,200,255,0)');
+    ctx.beginPath();
+    ctx.arc(x, y, r * 5, 0, Math.PI * 2);
+    ctx.fillStyle = glow;
+    ctx.fill();
+    // Bright core
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.fill();
+  }
+
+  const tex  = new THREE.CanvasTexture(cv);
+  tex.wrapS  = THREE.ClampToEdgeWrapping;
+  tex.wrapT  = THREE.ClampToEdgeWrapping;
+
+  const geo  = new THREE.SphereGeometry(20, 64, 32);
+  const mat  = new THREE.MeshBasicMaterial({
+    map:        tex,
+    side:       THREE.BackSide,
+    depthWrite: false,
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.renderOrder = -1;
+
+  // Add directly to globeGroup so it rotates with the globe
+  globeGroup.add(mesh);
+})();
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// POLAR CAP CONSTANTS
+// ═══════════════════════════════════════════════════════════════════════
+//
+// LAT_CAP_DEG  — latitude of the polar cap boundary (e.g. 60°)
+//                Above this boundary (toward the pole) we use gnomonic projection.
+//                Below — equirectangular.
+//
+// BLEND_DEG    — width of the blend zone (on both sides of the boundary).
+//                In this zone the polar cap fades from alpha=0 to alpha=1,
+//                and the equirectangular tile from alpha=1 to alpha=0.
+//                Eliminates visible seams without z-fighting artifacts.
+//
+// NOTE: These values are defaults — applyGridJson() may override LAT_CAP_DEG
+// from grid.json (polar_lat_cap field) to keep Python and JS in sync.
+let LAT_CAP_DEG  = 60;
+let BLEND_DEG    = 2;
+let LAT_CAP_RAD  = THREE.MathUtils.degToRad(LAT_CAP_DEG);
+let BLEND_RAD    = THREE.MathUtils.degToRad(BLEND_DEG);
+// theta (from north pole) corresponding to the cap boundary:
+//   theta = π/2 − lat,  lat=60° → theta=30°
+let THETA_CAP_N  = Math.PI / 2 - LAT_CAP_RAD;        // ~0.5236 rad (biegun N)
+let THETA_CAP_S  = Math.PI - THETA_CAP_N;             // ~2.618  rad (biegun S)
+let THETA_BLEND  = BLEND_RAD;                         // blend zone width
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// TILE GEOMETRY — buildTileGeo()
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Each tile is a slice of the unit sphere covering the range:
+//   phi   ∈ [phiStart, phiStart + phiLen]       (longitude)
+//   theta ∈ [thetaStart, thetaStart + thetaLen] (latitude from pole)
+//
+// POLAR CAP MODIFICATION:
+//   For row=0 (north pole): thetaStart shifts to THETA_CAP_N + THETA_BLEND
+//     (tile does not reach the pole — polar cap covers that area).
+//   For row=rows-1 (south pole): thetaEnd = THETA_CAP_S − THETA_BLEND.
+//   UVs are recalculated relative to the original full tile range
+//   so the texture is correctly cropped (not stretched).
+//
+// AXIS FLIP:
+//   phiStart = PI - (col+1)*phiLen   (instead of -PI + col*phiLen)
+//
+// UV:
+//   u = ix/segW     (0..1 without flipping — PNG is already mirrored)
+//   v = 1 - vt_full (vt_full = normalized theta within full tile range)
+//
+// WINDING ORDER: a,b,c / b,d,c → normals pointing outward from sphere
+//
+function buildTileGeo(col, row, cols, rows, segW, segH) {
+  const phiLen        = (Math.PI * 2) / cols;
+  const thetaLenFull  = Math.PI / rows;
+
+  // Full tile range (without clipping)
+  const thetaFullStart = row * thetaLenFull;
+  const thetaFullEnd   = thetaFullStart + thetaLenFull;
+
+  // Clip tiles at the polar cap boundary (outside the blend zone).
+  // First row (north pole): lower edge thetaStart shifts to THETA_CAP_N.
+  // Last row (south pole):  upper edge thetaEnd shifts to THETA_CAP_S.
+  // Ensures equirectangular tiles are not rendered under the polar caps.
+  let thetaStart = thetaFullStart;
+  let thetaEnd   = thetaFullEnd;
+  // Tiles are clipped exactly to the cap boundary (THETA_CAP_N).
+  // The polar cap (renderOrder=1) covers them in the blend zone with its own alpha 1→0.
+  // This prevents two transparent layers from overlapping (source of "sausage" artifacts).
+  if (row === 0)        thetaStart = Math.max(thetaStart, THETA_CAP_N);
+  if (row === rows - 1) thetaEnd   = Math.min(thetaEnd,   THETA_CAP_S);
+  const thetaLen = thetaEnd - thetaStart;
+  // If the range is empty after clipping (tile entirely under cap), return empty geometry
+  if (thetaLen <= 0) return new THREE.BufferGeometry();
+
+  const phiStart = Math.PI - (col + 1) * phiLen;
+
+  const vCount = (segW + 1) * (segH + 1);
+  const pos  = new Float32Array(vCount * 3);
+  const nor  = new Float32Array(vCount * 3);
+  const uvs  = new Float32Array(vCount * 2);
+  let vi = 0, ui = 0;
+
+  for (let iy = 0; iy <= segH; iy++) {
+    const vt    = iy / segH;
+    const theta = thetaStart + vt * thetaLen;
+    const sinT  = Math.sin(theta), cosT = Math.cos(theta);
+
+    // UV.v: map theta to tile range (0=top, 1=bottom in PNG)
+    const vtFull = (theta - thetaFullStart) / thetaLenFull;
+
+    for (let ix = 0; ix <= segW; ix++) {
+      const ut  = ix / segW;
+      const phi = phiStart + ut * phiLen;
+      const sinP = Math.sin(phi), cosP = Math.cos(phi);
+
+      const x = sinT * cosP, y = cosT, z = sinT * sinP;
+      pos[vi] = x; nor[vi] = x; vi++;
+      pos[vi] = y; nor[vi] = y; vi++;
+      pos[vi] = z; nor[vi] = z; vi++;
+
+      uvs[ui++] = 1 - ut;     // U flipped — corrects texture mirroring
+      uvs[ui++] = 1 - vtFull; // V flipped
+    }
+  }
+
+  const idx = [];
+  for (let iy = 0; iy < segH; iy++) {
+    for (let ix = 0; ix < segW; ix++) {
+      const a = iy * (segW + 1) + ix;
+      const b = a + 1;
+      const c = a + (segW + 1);
+      const d = c + 1;
+      idx.push(a, b, c,  b, d, c);
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('normal',   new THREE.BufferAttribute(nor, 3));
+  geo.setAttribute('uv',       new THREE.BufferAttribute(uvs, 2));
+  geo.setIndex(idx);
+  return geo;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// POLAR CAP GEOMETRY — buildPolarCapGeo()
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Creates a spherical disk from the pole (θ=0) to thetaCap (e.g. 30° from the pole).
+// Blend zone: from thetaCap to thetaCap + THETA_BLEND vertices have alpha=0.
+//
+// UV from gnomonic projection:
+//   r(θ) = tan(θ)              — distance from projection center
+//   r_max = tan(thetaCap + blendFrac*THETA_BLEND)  — normalization
+//   u = 0.5 + 0.5 · r · cos(azimuth) / r_max
+//   v = 0.5 + 0.5 · r · sin(azimuth) / r_max
+//
+// Azimuth: for north pole, azimuth runs from phi clockwise;
+// for south — reversed (to keep map orientation consistent with equirectangular).
+//
+// PARAMETERS:
+//   isNorth  — true = north cap (pole y=+1), false = south
+//   segR     — radial ring segments (radial precision)
+//   segPhi   — angular segments around the cap (circumferential precision)
+//
+function buildPolarCapGeo(isNorth, segR, segPhi) {
+  // thetaCap = angle from pole to cap boundary (Three.js theta convention)
+  const thetaCap    = THETA_CAP_N;  // same angle for both poles (symmetry)
+  const thetaBlend  = THETA_BLEND;
+  // Full geometry range: from pole to thetaCap + thetaBlend
+  const thetaMax    = thetaCap + thetaBlend;
+  // r_max w rzucie gnomonicznym (dla normalizacji UV)
+  const rMax        = Math.tan(thetaMax);
+
+  // North pole: y=+1, theta increases downward (toward equator)
+  // South pole: y=-1, theta measured from south pole (Y-axis symmetry)
+  const sign = isNorth ? 1 : -1;
+
+  const rings   = segR + 1;  // number of rings (including center)
+  const vPerRing = segPhi + 1; // vertices per ring (+1 for seam)
+  // Center (pole) — single vertex
+  const vCount  = 1 + rings * vPerRing;
+
+  const pos  = new Float32Array(vCount * 3);
+  const nor  = new Float32Array(vCount * 3);
+  const uvs  = new Float32Array(vCount * 2);
+  const cols = new Float32Array(vCount * 4); // RGBA vertex colors (dla alpha blend)
+  let vi = 0, ui = 0, ci = 0;
+
+  // ── Biegun (centrum dysku) ──
+  pos[vi]=0; nor[vi]=0; vi++;
+  pos[vi]=sign; nor[vi]=sign; vi++;
+  pos[vi]=0; nor[vi]=0; vi++;
+  uvs[ui++]=0.5; uvs[ui++]=0.5; // centrum tekstury
+  cols[ci++]=1; cols[ci++]=1; cols[ci++]=1; cols[ci++]=1; // alpha=1
+
+  // ── Rings around the pole ──
+  for (let ir = 0; ir < rings; ir++) {
+    const t  = (ir + 1) / rings;           // 0..1 (0=near pole, 1=edge)
+    const theta = thetaMax * t;            // angle from pole
+    const sinT  = Math.sin(theta);
+    const cosT  = Math.cos(theta);
+    const r     = Math.tan(theta);         // radius in gnomonic projection
+    const uv_r  = r / rMax;               // normalized UV radius (0..1 at edge)
+
+    // Alpha: full at center, gradually fading in the blend zone
+    const thetaFromCap = theta - thetaCap; // negative = inside cap, positive = blend
+    let alpha;
+    if (thetaFromCap <= 0) {
+      alpha = 1.0; // inside cap — fully visible
+    } else {
+      alpha = 1.0 - (thetaFromCap / thetaBlend); // liniowy zanik w strefie blend
+      alpha = Math.max(0, Math.min(1, alpha));
+    }
+
+    for (let ip = 0; ip <= segPhi; ip++) {
+      // Azimuth: angle around the pole. Reversed for consistency with equirectangular.
+      // For north pole: Three.js phi = -azimuth (because phiStart = PI - (col+1)*phiLen)
+      // Negation reverses it so E/W direction matches.
+      const frac   = ip / segPhi;
+      const azimut = frac * Math.PI * 2; // 0..2π
+
+      // Position on sphere (reversed azimuth → consistent with equirectangular)
+      const phi  = -azimut; // flip phi axis
+      const sinP = Math.sin(phi), cosP = Math.cos(phi);
+
+      // For south pole: theta increases from south pole, Y is negative
+      const x = sinT * cosP;
+      const y = sign * cosT;
+      const z = sinT * sinP;
+
+      pos[vi]=x; nor[vi]=x; vi++;
+      pos[vi]=y; nor[vi]=y; vi++;
+      pos[vi]=z; nor[vi]=z; vi++;
+
+      // UV z rzutu gnomonicznego
+      // For UV cos/sin we use the original (non-reversed) azimuth,
+      // but negate U to preserve texture chirality
+      const u = 0.5 + 0.5 * uv_r * Math.cos(azimut); // U without negation — phi=-azimut already corrects E/W direction
+      const v = 0.5 + 0.5 * uv_r * Math.sin(azimut) * sign; // sign flips V for south
+      uvs[ui++] = u;
+      uvs[ui++] = v;
+
+      cols[ci++]=1; cols[ci++]=1; cols[ci++]=1; cols[ci++]=alpha;
+    }
+  }
+
+  // ── Triangle indices ──
+  // Y-axis reflection (south pole: y negative) reverses triangle orientation,
+  // so N and S use opposite winding.
+  const idx = [];
+  const baseOffset = 1;
+
+  // Fan from center to first ring
+  for (let ip = 0; ip < segPhi; ip++) {
+    const a = 0;
+    const b = baseOffset + ip;
+    const c = baseOffset + ip + 1;
+    if (isNorth) { idx.push(a, b, c); }   // N: odwrotny
+    else         { idx.push(a, c, b); }   // S: correct (works)
+  }
+
+  // Rings
+  for (let ir = 0; ir < rings - 1; ir++) {
+    const rowA = baseOffset + ir * vPerRing;
+    const rowB = rowA + vPerRing;
+    for (let ip = 0; ip < segPhi; ip++) {
+      const a = rowA + ip, b = rowA + ip + 1;
+      const c = rowB + ip, d = rowB + ip + 1;
+      if (isNorth) { idx.push(a, b, c,  b, d, c); }  // N: odwrotny
+      else         { idx.push(a, c, b,  b, c, d); }  // S: poprawny
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position',  new THREE.BufferAttribute(pos,  3));
+  geo.setAttribute('normal',    new THREE.BufferAttribute(nor,  3));
+  geo.setAttribute('uv',        new THREE.BufferAttribute(uvs,  2));
+  geo.setAttribute('color',     new THREE.BufferAttribute(cols, 4));
+  geo.setIndex(idx);
+  return geo;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// VIEW CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════
+// VIEWS — loaded from grid.json (project root, shared with the Python scripts).
+// Fallback values used if grid.json is absent (e.g. local dev without tiles).
+// ═══════════════════════════════════════════════════════════════════════
+const VIEWS = {
+  far: {
+    cols: 8, rows: 4, seg: 40, tiles: null,
+    label: '🌐 General view',
+    dir: 'tiles/far',
+  },
+  near: {
+    cols: 72, rows: 36, seg: 60, tiles: null,
+    label: '🔍 Detailed view',
+    dir: 'tiles/near',
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════════
+// LANGUAGE SYSTEM
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Each language entry:
+//   id    — subdirectory name under tiles/  (e.g. "avalon" → tiles/avalon/near/)
+//           If a tile is missing, falls back to tiles/near/ automatically.
+//   label — display name in the UI
+//
+// To add a new language: append an entry to LANGUAGES. That's it.
+// ═══════════════════════════════════════════════════════════════════════
+const LANGUAGES = [
+  { id: 'avalon',   label: 'Avalon'   },
+  { id: 'sarmatia', label: 'Sarmatia' },
+];
+
+let activeLang = LANGUAGES[0];   // currently selected language (default: first in list)
+
+// Apply a language: update VIEWS dirs, flush caches, reload current view.
+function setLang(lang) {
+  if (lang.id === activeLang.id) return;
+  activeLang = lang;
+
+  VIEWS.near.dir = `tiles/${lang.id}/near`;
+  VIEWS.far.dir  = `tiles/${lang.id}/far`;
+
+  console.log(`[lang] "${lang.label}"  near→${VIEWS.near.dir}  far→${VIEWS.far.dir}`);
+
+  // Swap legend image — falls back to legend.png if lang-specific one missing
+  const legendEl = document.getElementById('legend');
+  if (legendEl) {
+    const langSrc = `${lang.id}_legend.png`;
+    const fallback = 'legend.png';
+    legendEl.onerror = () => { legendEl.onerror = null; legendEl.src = fallback; if (legendVisible) legendEl.style.display = ''; };
+    legendEl.onload  = () => { if (legendVisible) legendEl.style.display = ''; };
+    legendEl.src = langSrc;
+  }
+
+  // Flush FAR cache so it reloads from the new dir
+  delete groupCache['far'];
+
+  // Rebuild nearManager so it snapshots the new dir
+  if (nearManager) {
+    nearManager.reset();
+    globeGroup.remove(nearManager.group);
+    nearManager = null;
+  }
+
+  // Force reload of the active view
+  const prev = activeName;
+  activeName = null;
+  setView(prev);
+
+  // Update UI
+  langUpdateUI();
+}
+
+// ── Language UI ──────────────────────────────────────────────────────
+const langWrap     = document.getElementById('lang-wrap');
+const langBtn      = document.getElementById('lang-btn');
+const langDropdown = document.getElementById('lang-dropdown');
+
+function langUpdateUI() {
+  langBtn.childNodes[0].textContent = activeLang.label;
+  langDropdown.innerHTML = '';
+  LANGUAGES.forEach(lang => {
+    const isActive = lang.id === activeLang.id;
+    const btn = document.createElement('button');
+    btn.className = 'lang-option' + (isActive ? ' active' : '');
+    btn.textContent = lang.label;
+    btn.addEventListener('click', () => {
+      langWrap.classList.remove('open');
+      if (!isActive) setLang(lang);
+    });
+    langDropdown.appendChild(btn);
+  });
+}
+
+// ── Legend toggle ────────────────────────────────────────────────────
+const legendBtn = document.getElementById('legend-btn');
+const legendImg = document.getElementById('legend');
+let legendVisible = false;
+legendBtn.addEventListener('click', () => {
+  legendVisible = !legendVisible;
+  legendImg.style.display = legendVisible ? '' : 'none';
+});
+
+// Toggle dropdown open/close
+langBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const opening = !langWrap.classList.contains('open');
+  langWrap.classList.toggle('open');
+  if (opening) langUpdateUI();   // refresh availability on open
+});
+
+// Close on outside click
+document.addEventListener('click', () => langWrap.classList.remove('open'));
+langDropdown.addEventListener('click', e => e.stopPropagation());
+
+// Initial UI render
+langUpdateUI();
+
+// Polar tile paths (gnomonic projection)
+const POLAR_TILES = {
+  north: 'tiles/polar_n.webp',
+  south: 'tiles/polar_s.webp',
+};
+
+// Apply grid.json values if available — runs synchronously via XMLHttpRequest
+// so VIEWS is fully populated before any other code references it.
+// For NEAR: if subtile_size < tile_out, cols/rows are multiplied by the split
+// factor so nearManager works on the sub-tile grid directly.
+(function applyGridJson() {
+  try {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'grid.json', false);   // synchronous
+    xhr.send();
+    if (xhr.status === 200) {
+      const grid = JSON.parse(xhr.responseText);
+      const tileOut   = grid.tile_out    || 1024;
+      const subtile   = grid.subtile_size || tileOut;
+      const split     = Math.round(tileOut / subtile);  // e.g. 4 for 1024→256
+
+      // Sync polar cap boundary with gen_tiles.py / gen_polar_tiles.py
+      if (grid.polar_lat_cap != null) {
+        LAT_CAP_DEG = grid.polar_lat_cap;
+        LAT_CAP_RAD = THREE.MathUtils.degToRad(LAT_CAP_DEG);
+        THETA_CAP_N = Math.PI / 2 - LAT_CAP_RAD;
+        THETA_CAP_S = Math.PI - THETA_CAP_N;
+      }
+
+      ['far', 'near'].forEach(v => {
+        const g = grid.views && grid.views[v];
+        if (!g) return;
+        let cols = g.cols;
+        let rows = g.rows;
+        // NEAR: expand grid by split factor to match sub-tile filenames
+        if (v === 'near' && split > 1) {
+          cols = cols * split;
+          rows = rows * split;
+        }
+        VIEWS[v].cols     = cols;
+        VIEWS[v].rows     = rows;
+        VIEWS[v].seg      = g.seg || VIEWS[v].seg;
+        VIEWS[v].tileSize = (v === 'near') ? subtile : tileOut;
+        const dw = (360 / cols).toFixed(2);
+        const dh = (180 / rows).toFixed(2);
+        if (v === 'near') VIEWS[v].label = `🔍 Detailed view · ${dw}°×${dh}°`;
+      });
+      console.log(`[grid.json] far=${VIEWS.far.cols}×${VIEWS.far.rows}  `
+                + `near=${VIEWS.near.cols}×${VIEWS.near.rows}  `
+                + `subtile=${subtile}px (split=${split}×${split})`
+                + (grid.polar_lat_cap != null ? `  polar_lat_cap=${grid.polar_lat_cap}°` : ''));
+    }
+  } catch(e) {
+    console.warn('[grid.json] Not loaded — using fallback VIEWS', e);
+  }
+})();
+
+// ═══════════════════════════════════════════════════════════════════════
+// VIEW LOADING — loadView()
+// ═══════════════════════════════════════════════════════════════════════
+const groupCache = {};  // cache: name → THREE.Group (unchanged)
+const maxAniso   = renderer.capabilities.getMaxAnisotropy();
+
+// ── Helper: load texture from URL or use fallback canvas ──
+// If fallbackSrc is provided and src fails to load, tries fallbackSrc first
+// before falling back to the canvas fallbackFn. Used for language tiles:
+// if tiles/avalon/near/X.webp is missing, loads tiles/near/X.webp instead.
+function loadTexture(src, fallbackFn, onDone, fallbackSrc) {
+  const img = new Image();
+  img.onload = () => {
+    const tex = new THREE.Texture(img);
+    tex.anisotropy      = maxAniso;
+    tex.minFilter       = THREE.LinearMipmapLinearFilter;
+    tex.magFilter       = THREE.LinearFilter;
+    tex.generateMipmaps = true;
+    tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+    tex.needsUpdate     = true;
+    onDone(tex);
+  };
+  img.onerror = () => {
+    if (fallbackSrc && fallbackSrc !== src) {
+      // Try the default-language tile before giving up
+      loadTexture(fallbackSrc, fallbackFn, onDone);
+    } else {
+      const cv  = fallbackFn();
+      const tex = new THREE.CanvasTexture(cv);
+      tex.anisotropy = maxAniso;
+      onDone(tex);
+    }
+  };
+  img.src = src;
+}
+
+// ── Fallback: kolorowa siatka dla kafelka equirectangular ──
+// diagColor: optional diagnostic color overriding random hue
+function makeTileFallback(col, row, cols, rows, diagColor) {
+  const cv  = document.createElement('canvas');
+  cv.width  = cv.height = 256;
+  const ctx = cv.getContext('2d');
+  const hue = (col / cols * 360 + row * 30) % 360;
+  ctx.fillStyle = diagColor || `hsl(${hue},40%,22%)`;
+  ctx.fillRect(0, 0, 256, 256);
+  ctx.strokeStyle = diagColor ? 'rgba(255,255,255,0.7)' : `hsl(${hue},60%,55%)`;
+  ctx.lineWidth = diagColor ? 8 : 3;
+  ctx.strokeRect(6, 6, 244, 244);
+  ctx.fillStyle = 'white';
+  ctx.textAlign = 'center';
+  if (diagColor) {
+    // Diagnostic mode — large label with view name
+    const label = diagColor === '#cc2200' ? 'FAR' : 'NEAR';
+    ctx.font = 'bold 72px sans-serif';
+    ctx.fillText(label, 128, 148);
+  } else {
+    ctx.font = `bold 28px sans-serif`;
+    ctx.fillStyle = `hsl(${hue},70%,75%)`;
+    ctx.fillText(`${row},${col}`, 128, 100);
+    ctx.font = '18px sans-serif';
+    ctx.fillText(`lon ${Math.round(-180 + col*360/cols)}°`, 128, 140);
+    ctx.fillText(`lat ${Math.round(90 - row*180/rows)}°`, 128, 165);
+  }
+  return cv;
+}
+
+// ── Fallback: proceduralna tekstura polarna gnomoniczna ──
+function makePolarFallback(isNorth) {
+  const size = 512;
+  const cv   = document.createElement('canvas');
+  cv.width   = cv.height = size;
+  const ctx  = cv.getContext('2d');
+  const cx   = size / 2, cy = size / 2;
+
+  // Background gradient — polar ocean
+  const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 2);
+  grad.addColorStop(0,   isNorth ? '#c8dff0' : '#d0e8d0'); // ice / land
+  grad.addColorStop(0.5, isNorth ? '#7ab4d8' : '#8dc88a');
+  grad.addColorStop(1,   isNorth ? '#2a6090' : '#3a8050');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, size, size);
+
+  // Gnomonic meridian grid (rays from center)
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 1;
+  for (let a = 0; a < 360; a += 30) {
+    const rad = a * Math.PI / 180;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(rad) * size * 0.5, cy + Math.sin(rad) * size * 0.5);
+    ctx.stroke();
+  }
+  // Parallel circles
+  for (let r = 0.2; r <= 1.0; r += 0.2) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * size * 0.5, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  return cv;
+}
+
+// ── Polar caps — loaded once, independent of view ──
+// Added directly to globeGroup (not to the view group),
+// so they are not removed when switching FAR/NEAR.
+let polarGroup = null;
+
+function loadPolarCaps() {
+  if (polarGroup) return; // already loaded
+  polarGroup = new THREE.Group();
+
+  const polarVert = `
+    varying vec2 vUv;
+    varying float vAlpha;
+    attribute vec4 color;
+    void main() {
+      vUv    = uv;
+      vAlpha = color.a;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `;
+  const polarFrag = `
+    uniform sampler2D map;
+    varying vec2 vUv;
+    varying float vAlpha;
+    void main() {
+      vec4 c = texture2D(map, vUv);
+      gl_FragColor = vec4(c.rgb, c.a * vAlpha);
+    }
+  `;
+
+  [true, false].forEach(isNorth => {
+    const src = isNorth ? POLAR_TILES.north : POLAR_TILES.south;
+    loadTexture(
+      src,
+      () => makePolarFallback(isNorth),
+      (tex) => {
+        const geo = buildPolarCapGeo(isNorth, 64, 128);
+        const mat = new THREE.ShaderMaterial({
+          uniforms:       { map: { value: tex } },
+          vertexShader:   polarVert,
+          fragmentShader: polarFrag,
+          transparent:    true,
+          depthWrite:     false,
+          depthTest:      false, // skip depth buffer check — cap always renders on top of tiles
+          side:           THREE.BackSide,
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.renderOrder = 1; // renderuj po kafelkach
+        polarGroup.add(mesh);
+        // Add to scene after first cap is loaded
+        if (!globeGroup.children.includes(polarGroup)) {
+          globeGroup.add(polarGroup);
+        }
+        loader.tick(); // polar cap loaded
+      }
+    );
+  });
+}
+
+// Stores list of callbacks waiting for a view to finish loading (in-flight)
+const loadingCallbacks = {}; // name → [{isCancelled, onDone}] (unchanged)
+
+// ── loadView: used for FAR only ──────────────────────────────────────────────
+// NEAR uses nearManager (on-demand, frustum-culled, memory-safe).
+function loadView(name, isCancelled, onDone) {
+  if (groupCache[name]) {
+    setTimeout(() => onDone(groupCache[name]), 0);
+    return;
+  }
+  if (loadingCallbacks[name]) {
+    loadingCallbacks[name].push({ isCancelled, onDone });
+    return;
+  }
+  loadingCallbacks[name] = [{ isCancelled, onDone }];
+
+  const cfg    = VIEWS[name];
+  const group  = new THREE.Group();
+  const needed = cfg.cols * cfg.rows;
+  let completed = 0;
+  let inFlight  = 0;
+  const queue   = [];
+
+  for (let row = 0; row < cfg.rows; row++)
+    for (let col = 0; col < cfg.cols; col++)
+      queue.push({ row, col });
+
+  let queueIdx = 0;
+
+  function finish() {
+    const callbacks = loadingCallbacks[name] || [];
+    delete loadingCallbacks[name];
+    const active = callbacks.filter(cb => !cb.isCancelled());
+    if (active.length === 0) return;
+    groupCache[name] = group;
+    active.forEach(cb => cb.onDone(group));
+  }
+
+  function loadOne({ row, col }) {
+    const src        = `${cfg.dir}/${row}_${col}.webp`;
+    const defaultSrc = `tiles/${name}/${row}_${col}.webp`;  // default-lang fallback
+    loadTexture(src,
+      () => makeTileFallback(col, row, cfg.cols, cfg.rows, cfg.diagColor),
+      (tex) => {
+        loader.tick();
+        inFlight--;
+        completed++;
+        const segW = Math.max(8, Math.round(cfg.seg / cfg.cols));
+        const segH = Math.max(8, Math.round(cfg.seg / cfg.rows));
+        const geo  = buildTileGeo(col, row, cfg.cols, cfg.rows, segW, segH);
+        if (geo.index && geo.index.count > 0) {
+          const mat = new THREE.MeshBasicMaterial({
+            map: tex, side: THREE.FrontSide,
+            polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1,
+          });
+          const mesh = new THREE.Mesh(geo, mat);
+          mesh.userData.tileFile = src;
+          group.add(mesh);
+        }
+        pump();
+        if (completed === needed) finish();
+      },
+      src !== defaultSrc ? defaultSrc : undefined
+    );
+  }
+
+  function pump() {
+    while (inFlight < 32 && queueIdx < queue.length) {
+      inFlight++;
+      loadOne(queue[queueIdx++]);
+    }
+  }
+  pump();
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// NEAR TILE MANAGER — on-demand, frustum-culled, memory-safe
+// ═══════════════════════════════════════════════════════════════════════
+// NOTE: nearManager is initialised lazily on first activation so that
+// VIEWS.near.cols/rows are already set by applyGridJson.
+let nearManager = null;
+
+function buildNearManager() {
+  const CONCURRENCY = 6;    // max parallel HTTP requests
+  const BUFFER_DEG  = 5.0;  // extra degrees loaded around visible cap (prefetch ring)
+
+  // Snapshot cfg after applyGridJson has run
+  const cols = VIEWS.near.cols;   // 288
+  const rows = VIEWS.near.rows;   // 144
+  const dir  = VIEWS.near.dir;
+
+  const group    = new THREE.Group();
+  const state    = {};   // key → 'loading'|'loaded'|'error'  (absent = idle)
+  const meshes   = {};
+  const textures = {};
+  const geos     = {};
+
+  let inFlight    = 0;
+  let loadQueue   = [];
+  let lastUpdateT = 0;
+  const UPDATE_MS = 150;
+
+  // Pre-compute tile centre lat/lon (degrees) for fast distance test
+  const tileLat = new Float32Array(rows);   // centre lat of each row
+  const tileLon = new Float32Array(cols);   // centre lon of each col
+  for (let r = 0; r < rows; r++)
+    tileLat[r] = 90 - (r + 0.5) * (180 / rows);
+  for (let c = 0; c < cols; c++)
+    tileLon[c] = -180 + (c + 0.5) * (360 / cols);
+
+  // Angular radius of the visible cap at NEAR zoom distance
+  // acos(1/dist) gives the half-angle of the visible hemisphere
+  const NEAR_DIST = 1.15;   // must match ZOOM_DIST[1]
+  // Angular radius of visible cap: acos(1/dist). FOV does NOT add to this —
+  // the horizon is the hard limit regardless of field of view.
+  const VIS_DEG = Math.acos(1 / NEAR_DIST) * 180 / Math.PI;  // ~29.6°
+  const LOAD_RADIUS_DEG = VIS_DEG + BUFFER_DEG;  // ~33.6°
+
+  function tileKey(r, c) { return `${r}_${c}`; }
+
+  function getGeo(row, col) {
+    const key = tileKey(row, col);
+    if (!geos[key]) geos[key] = buildTileGeo(col, row, cols, rows, 6, 6);
+    return geos[key];
+  }
+
+  // Globe centre lat/lon from globeGroup rotation
+  // rotation.x = -lat_rad,  rotation.y = -lon_rad (negated due to flipped phi)
+  // Initial rotation.y = PI/2 corresponds to lon=0°, so subtract that offset.
+  function centreLatLon() {
+    // rotation.x positive → globe tilts north → southern hemisphere faces camera
+    // so visible lat = +rotation.x (not negated), matching tile row ordering
+    const lat = THREE.MathUtils.radToDeg(globeGroup.rotation.x);
+    const lon = -THREE.MathUtils.radToDeg(globeGroup.rotation.y + Math.PI / 2);
+    return { lat, lon };
+  }
+
+  // Great-circle angular distance between two points (degrees)
+  function gcDist(lat1, lon1, lat2, lon2) {
+    const toRad = Math.PI / 180;
+    const φ1 = lat1 * toRad, φ2 = lat2 * toRad;
+    const Δλ = (lon2 - lon1) * toRad;
+    const sinφ = Math.sin(φ1) * Math.sin(φ2);
+    const cosφ = Math.cos(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+    return Math.acos(Math.max(-1, Math.min(1, sinφ + cosφ))) / toRad;
+  }
+
+  function evict(wantedSet) {
+    for (const key of Object.keys(meshes)) {
+      if (!wantedSet.has(key)) {
+        group.remove(meshes[key]);
+        meshes[key].material.dispose();
+        textures[key].dispose();
+        delete meshes[key];
+        delete textures[key];
+        delete state[key];
+      }
+    }
+  }
+
+  function pump() {
+
+    while (inFlight < CONCURRENCY && loadQueue.length > 0) {
+      const { row, col } = loadQueue.shift();
+      const key        = tileKey(row, col);
+      if (state[key]) continue;
+      state[key] = 'loading';
+      inFlight++;
+      const src        = `${dir}/${key}.webp`;
+      const defaultSrc = `tiles/near/${key}.webp`;   // default-lang fallback
+      loadTexture(src,
+        () => makeTileFallback(col, row, cols, rows),
+        (tex) => {
+          inFlight--;
+          if (state[key] !== 'loading') { tex.dispose(); pump(); return; }
+          const geo = getGeo(row, col);
+          if (geo.index && geo.index.count > 0) {
+            const mat = new THREE.MeshBasicMaterial({
+              map: tex, side: THREE.FrontSide,
+              polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1,
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.userData.tileFile = src;
+            textures[key] = tex;
+            meshes[key]   = mesh;
+            state[key]    = 'loaded';
+            group.add(mesh);
+          } else {
+            console.warn('[near] empty geo for', key, 'index:', geo.index ? geo.index.count : 'null');
+            state[key] = 'error';
+          }
+          pump();
+        },
+        src !== defaultSrc ? defaultSrc : undefined
+      );
+    }
+  }
+
+  function update(now) {
+    if (now - lastUpdateT < UPDATE_MS) { pump(); return; }
+    lastUpdateT = now;
+
+    const { lat: cLat, lon: cLon } = centreLatLon();
+    const visRadius  = LOAD_RADIUS_DEG;
+    const buffRadius = visRadius;  // buffer already included in LOAD_RADIUS_DEG
+
+    // Find all tiles within angular radius — build wanted set
+    const wanted  = new Set();
+    const visible = [];   // tiles closest to centre (load first)
+
+    for (let r = 0; r < rows; r++) {
+      const latR = tileLat[r];
+      // Quick lat pre-filter: skip rows clearly out of range
+      if (Math.abs(latR - cLat) > visRadius + 5) continue;
+
+      for (let c = 0; c < cols; c++) {
+        // Skip tiles hidden under polar caps
+        if (Math.abs(latR) >= LAT_CAP_DEG) continue;
+        const dist = gcDist(cLat, cLon, latR, tileLon[c]);
+        if (dist <= visRadius) {
+          const key = tileKey(r, c);
+          wanted.add(key);
+          if (!state[key]) visible.push({ row: r, col: c, dist });
+        }
+      }
+    }
+
+    evict(wanted);
+
+    // Sort by distance from centre — closest tiles load first
+    visible.sort((a, b) => a.dist - b.dist);
+    loadQueue = visible;
+    pump();
+  }
+
+  function reset() {
+    for (const key of Object.keys(meshes)) {
+      group.remove(meshes[key]);
+      meshes[key].material.dispose();
+      textures[key].dispose();
+    }
+    Object.keys(meshes).forEach(k => delete meshes[k]);
+    Object.keys(textures).forEach(k => delete textures[k]);
+    Object.keys(state).forEach(k => delete state[k]);
+    loadQueue = [];
+  }
+
+  return { group, update, reset };
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// VIEW MANAGEMENT
+// ═══════════════════════════════════════════════════════════════════════
+let activeGroup = null;
+let activeName  = null;
+let loadSeq     = 0; // sequence — each new load gets a new number
+
+// ═══════════════════════════════════════════════════════════════════════
+// LOADER — progress tracking
+// We expect: FAR tiles + NEAR tiles + 2 polar caps.
+// Loader hides when all loaded AND FAR tiles are in the scene.
+// ═══════════════════════════════════════════════════════════════════════
+const loader = (() => {
+  const elBar   = document.getElementById('load-bar');
+  const elCount = document.getElementById('load-count');
+  const elPhase = document.getElementById('load-phase');
+  const elWrap  = document.getElementById('loading');
+
+  // NEAR tiles are loaded on-demand — only FAR (32) + polar caps (2) tracked here
+  const FAR_COUNT = VIEWS.far.cols * VIEWS.far.rows;  // 32
+  const TOTAL     = FAR_COUNT + 2;                    // + 2 polar caps
+
+  let done       = 0;
+  let farInScene = false;
+  let dismissed  = false;
+  const startTime      = Date.now();
+  const MIN_DISPLAY_MS = 3000;
+
+  function refresh() {
+    if (dismissed) return;
+    const pct = Math.min(100, Math.round((done / TOTAL) * 100));
+    elBar.style.width   = pct + '%';
+    elCount.textContent = `${done} / ${TOTAL}`;
+    if (done < FAR_COUNT)
+      elPhase.textContent = 'Loading overview…';
+    else
+      elPhase.textContent = 'Loading polar caps…';
+  }
+
+  function tryDismiss() {
+    if (dismissed) return;
+    if (farInScene && done >= TOTAL) {
+      dismissed = true;
+      elPhase.textContent = 'Ready';
+      elBar.style.width = '100%';
+      const elapsed = Date.now() - startTime;
+      const delay = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      setTimeout(() => {
+        elWrap.classList.add('out');
+        setTimeout(() => elWrap.remove(), 900);
+      }, delay + 150);
+    }
+  }
+
+  return {
+    tick() {
+      done++;
+      refresh();
+      tryDismiss();
+    },
+    farReady() {
+      farInScene = true;
+      tryDismiss();
+    },
+  };
+})();
+
+function setView(name) {
+  if (name === activeName) return;
+  activeName = name;
+
+  // Remove previous tile group — keep polar caps and starfield
+  const toRemove = globeGroup.children.filter(c => c !== polarGroup && !c.isStarfield);
+  toRemove.forEach(c => globeGroup.remove(c));
+  activeGroup = null;
+
+  if (name === 'near') {
+    // Lazy-init nearManager after applyGridJson has set VIEWS.near.cols/rows
+    if (!nearManager) nearManager = buildNearManager();
+    globeGroup.add(nearManager.group);
+    activeGroup = nearManager.group;
+  } else {
+    // Switching away from NEAR — evict all tiles to free memory
+    if (nearManager) {
+      nearManager.reset();
+      globeGroup.remove(nearManager.group);
+    }
+
+    const mySeq = ++loadSeq;
+    const isCancelled = () => mySeq !== loadSeq;
+
+    loadView(name, isCancelled, (group) => {
+      if (isCancelled()) return;
+      const toRemove2 = globeGroup.children.filter(c => c !== polarGroup && !c.isStarfield);
+      toRemove2.forEach(c => globeGroup.remove(c));
+      globeGroup.remove(group);
+      activeGroup = group;
+      globeGroup.add(group);
+      if (name === 'far') loader.farReady();
+    });
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// ZOOM — dwa poziomy
+// ═══════════════════════════════════════════════════════════════════════
+let targetDist = ZOOM_DIST[0]; // smoothly animated in render loop
+
+function doZoom(delta) {
+  const next = zoomIdx + delta;
+  if (next < 0 || next >= ZOOM_DIST.length) return;
+  zoomIdx    = next;
+  targetDist = ZOOM_DIST[zoomIdx];
+  const viewName = zoomIdx > 0 ? 'near' : 'far';
+  setView(viewName);
+}
+window.addEventListener('keydown', e => {
+  if (e.key === '+' || e.key === '=') doZoom(1);
+  if (e.key === '-' || e.key === '_') doZoom(-1);
+});
+// Mouse wheel scroll
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  doZoom(e.deltaY < 0 ? 1 : -1);
+}, { passive: false });
+// Double click — zoom in (if far) or out (if close)
+canvas.addEventListener('dblclick', e => {
+  e.preventDefault();
+  doZoom(zoomIdx === 0 ? 1 : -1);
+});
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+// DEBUG MODE — raycasting + tile tint under cursor
+// ═══════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════
+const dbgTooltip  = document.getElementById('dbg-tooltip');
+const dbgRaycaster = new THREE.Raycaster();
+const dbgMouse     = new THREE.Vector2();
+let   dbgLastMesh  = null;
+
+const DBG_TINT = new THREE.Color(0xff6633); // tint color (orange-red)
+
+// ── Subtile reverse map — loaded from tiles/near/subtile_map.txt ──────
+// Maps "row_col.webp" → "src_row_src_col.png" for the NEAR view.
+// Built once on first debug hover, stays empty if file is absent.
+const dbgSubtileMap = {};   // e.g. { "24_3.webp": "6_0.png", … }
+let   dbgSubtileMapLoaded = false;
+
+function dbgLoadSubtileMap() {
+  if (dbgSubtileMapLoaded) return;
+  dbgSubtileMapLoaded = true;
+  try {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `${VIEWS.near.dir}/subtile_map.txt`, false); // synchronous
+    xhr.send();
+    if (xhr.status !== 200) return;
+    // Parse only the REVERSE LOOKUP section
+    let inReverse = false;
+    for (const line of xhr.responseText.split('\n')) {
+      if (line.startsWith('REVERSE LOOKUP')) { inReverse = true; continue; }
+      if (!inReverse) continue;
+      // Format:  "  24_3.webp           ←  6_0.png"
+      const m = line.match(/^\s+(\S+\.webp)\s+←\s+(\S+\.png)/);
+      if (m) dbgSubtileMap[m[1]] = m[2];
+    }
+    console.log(`[debug] subtile_map.txt loaded — ${Object.keys(dbgSubtileMap).length} entries`);
+  } catch(e) {
+    console.warn('[debug] subtile_map.txt not available:', e);
+  }
+}
+
+function dbgGetTileMeshes() {
+  if (!activeGroup) return [];
+  return activeGroup.children.filter(m => m.userData.tileFile);
+}
+
+function dbgClearTint() {
+  if (dbgLastMesh) {
+    dbgLastMesh.material.color.set(0xffffff);
+    dbgLastMesh = null;
+  }
+}
+
+function dbgUpdate(mouseEvent) {
+  if (!DEBUG) return;
+
+  const rect = canvas.getBoundingClientRect();
+  dbgMouse.x =  ((mouseEvent.clientX - rect.left) / rect.width)  * 2 - 1;
+  dbgMouse.y = -((mouseEvent.clientY - rect.top)  / rect.height) * 2 + 1;
+
+  dbgRaycaster.setFromCamera(dbgMouse, camera);
+  const hits = dbgRaycaster.intersectObjects(dbgGetTileMeshes(), false);
+
+  if (hits.length === 0) {
+    dbgTooltip.style.display = 'none';
+    dbgClearTint();
+    return;
+  }
+
+  const mesh = hits[0].object;
+
+  // Change tint only when moving to a new tile
+  if (mesh !== dbgLastMesh) {
+    dbgClearTint();
+    mesh.material.color.copy(DBG_TINT);
+    dbgLastMesh = mesh;
+  }
+
+  // Tooltip: "tiles/near/27_3.webp  (← 6_0.png)"
+  const tileFile = mesh.userData.tileFile;
+  const fileName = tileFile.split('/').pop();         // "27_3.webp"
+  const srcPng   = dbgSubtileMap[fileName];           // "6_0.png" or undefined
+  dbgTooltip.textContent = srcPng
+    ? `${tileFile}  (← ${srcPng})`
+    : tileFile;
+  dbgTooltip.style.display = 'block';
+  const tx = Math.min(mouseEvent.clientX + 14, window.innerWidth  - dbgTooltip.offsetWidth  - 8);
+  const ty = Math.max(mouseEvent.clientY - 32, 8);
+  dbgTooltip.style.left = tx + 'px';
+  dbgTooltip.style.top  = ty + 'px';
+}
+
+// Aktywuj tylko gdy DEBUG=true
+if (DEBUG) {
+  canvas.addEventListener('mousemove', dbgUpdate);
+  canvas.addEventListener('mouseleave', () => {
+    dbgTooltip.style.display = 'none';
+    dbgClearTint();
+  });
+  // Pre-load subtile map so it's ready before the first hover
+  dbgLoadSubtileMap();
+  console.info('%c[DEBUG MODE ON]', 'color:#ff4444;font-weight:bold');
+}
+
+
+
+let dragging = false, lastX = 0, lastY = 0, velX = 0, velY = 0;
+const DAMP  = 0.90;  // inertia damping (0=none, 1=instant stop)
+const SPEED = 0.005; // rotation sensitivity (rad/pixel)
+
+// Mysz
+canvas.addEventListener('mousedown', e => {
+  dragging = true; velX = velY = 0;
+  lastX = e.clientX; lastY = e.clientY;
+});
+window.addEventListener('mouseup', () => { dragging = false; velX = velY = 0; });
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  velY = (e.clientX - lastX) * SPEED; // horizontal movement → Y rotation (lon)
+  velX = (e.clientY - lastY) * SPEED; // vertical movement  → X rotation (lat)
+  globeGroup.rotation.y += velY;
+  globeGroup.rotation.x += velX;
+  lastX = e.clientX; lastY = e.clientY;
+  refreshCoords();
+});
+
+// Dotyk (mobile)
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length !== 1) return;
+  dragging = true; velX = velY = 0;
+  lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+}, { passive: true });
+window.addEventListener('touchend', () => { dragging = false; velX = velY = 0; });
+window.addEventListener('touchmove', e => {
+  if (!dragging || e.touches.length !== 1) return;
+  velY = (e.touches[0].clientX - lastX) * SPEED;
+  velX = (e.touches[0].clientY - lastY) * SPEED;
+  globeGroup.rotation.y += velY;
+  globeGroup.rotation.x += velX;
+  lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  refreshCoords();
+}, { passive: true });
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// COORDINATES DISPLAY
+// ═══════════════════════════════════════════════════════════════════════
+function fmtLat(v) {
+  v = Math.max(-90, Math.min(90, v));
+  return `${Math.abs(v).toFixed(1)}°${v >= 0 ? 'N' : 'S'}`;
+}
+function fmtLon(v) {
+  v = ((v + 180) % 360 + 360) % 360 - 180; // normalize to [-180, 180]
+  return `${Math.abs(v).toFixed(1)}°${v >= 0 ? 'E' : 'W'}`;
+}
+
+function refreshCoords() {
+  // Lat: globe X rotation = -lat (rotating up = south facing forward)
+  const lat = -THREE.MathUtils.radToDeg(globeGroup.rotation.x);
+
+  // Lon: NEGATE rotation.y — geometry has flipped phi axis (phiStart = PI-...),
+  // so raw rotation.y is mirrored. Negation compensates for this.
+  // Subtract initial PI/2 offset (lon=0° faces camera at startup).
+  const lon = -THREE.MathUtils.radToDeg(globeGroup.rotation.y + Math.PI / 2);
+
+  document.getElementById('coords').textContent =
+    `Centrum: ${fmtLat(lat)}  ${fmtLon(lon)}`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// RENDER LOOP
+// ═══════════════════════════════════════════════════════════════════════
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Rotation inertia — applied only when not dragging
+  if (!dragging) {
+    globeGroup.rotation.x += velX;
+    globeGroup.rotation.y += velY;
+    velX *= DAMP;
+    velY *= DAMP;
+    if (Math.abs(velX) + Math.abs(velY) > 4e-5) refreshCoords();
+  }
+
+  // Clamp X rotation to prevent flipping the globe past the poles
+  globeGroup.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, globeGroup.rotation.x));
+
+  // Smooth camera lerp toward target distance
+  camera.position.z += (targetDist - camera.position.z) * 0.09;
+
+  // Update NEAR tile manager when active (throttled internally)
+  if (nearManager && activeName === 'near') nearManager.update(performance.now());
+
+  renderer.render(scene, camera);
+}
+
+
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// START
+// ═══════════════════════════════════════════════════════════════════════
+loadPolarCaps();
+
+// Apply ?lang=avalon from URL if present and valid
+(function applyUrlLang() {
+  const id = new URLSearchParams(location.search).get('lang');
+  if (id) {
+    // URL param present — use specified language if valid, otherwise keep default
+    const match = LANGUAGES.find(l => l.id === id);
+    if (match) {
+      activeLang = match;
+      VIEWS.far.dir  = `tiles/${match.id}/far`;
+      VIEWS.near.dir = `tiles/${match.id}/near`;
+      langUpdateUI();
+      const legendEl = document.getElementById('legend');
+      if (legendEl) {
+        legendEl.onerror = () => { legendEl.onerror = null; legendEl.src = 'legend.png'; if (legendVisible) legendEl.style.display = ''; };
+        legendEl.onload  = () => { if (legendVisible) legendEl.style.display = ''; };
+        legendEl.src = `${match.id}_legend.png`;
+      }
+    }
+  } else {
+    // No URL param — sync dirs to default language
+    VIEWS.far.dir  = `tiles/${activeLang.id}/far`;
+    VIEWS.near.dir = `tiles/${activeLang.id}/near`;
+  }
+})();
+
+setView('far');
+animate();
+</script>
+</body>
+</html>
