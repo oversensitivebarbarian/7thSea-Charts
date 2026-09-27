@@ -1,0 +1,22 @@
+{
+  "tile_out": 1024,
+  "max_correction": 8.0,
+  "polar_lat_cap": 60,
+  "views": {
+    "far": {
+      "cols": 8,
+      "rows": 4,
+      "lat_stretch": false,
+      "seg": 40,
+      "desc": "45x45 degrees per tile"
+    },
+    "near": {
+      "cols": 72,
+      "rows": 36,
+      "lat_stretch": true,
+      "seg": 60,
+      "desc": "5x5 degrees per tile"
+    }
+  },
+  "subtile_size": 1024
+}
